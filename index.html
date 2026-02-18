@@ -131,7 +131,7 @@
     }
 
     .btn{
-      display:inline-flex;
+       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
@@ -144,6 +144,9 @@
       font-size:.92rem;
       box-shadow: 0 10px 20px rgba(15,29,42,.06);
       cursor:pointer;
+
+      text-decoration: none;
+      white-space: nowrap;
     }
     .btn.primary{
       border:none;
@@ -174,6 +177,7 @@
       width:520px; height:520px; border-radius:50%;
       background: radial-gradient(circle at 35% 35%, rgba(217,58,74,.40), transparent 62%);
       opacity:.75;
+      pointer-events: none;
     }
     .hero:after{
       content:"";
@@ -181,6 +185,7 @@
       width:560px; height:560px; border-radius:50%;
       background: radial-gradient(circle at 40% 40%, rgba(26,102,173,.42), transparent 62%);
       opacity:.65;
+      pointer-events: none;
     }
 
     .hero-inner{
