@@ -512,6 +512,45 @@ footer{
 @media (hover:hover){
   #backToTop:hover{ transform: translateY(-2px); }
 }
+/* Compact hero appointment section */
+
+.hero-appointment{
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.hero-appointment-image img{
+  width:90px;
+  height:auto;
+  display:block;
+  filter: drop-shadow(0 12px 22px rgba(15,29,42,.15));
+}
+
+.hero-appointment-content h4{
+  margin:0 0 8px;
+  font-size:1rem;
+  color:var(--blue-900);
+}
+
+.hero-appointment-content .btn{
+  padding:8px 14px;
+  font-size:.9rem;
+}
+
+/* Mobile */
+@media(max-width:980px){
+  .hero-appointment{
+    flex-direction:column;
+    text-align:center;
+  }
+  .hero-appointment-image img{
+    width:130px;
+  }
+}
     
   </style>
 </head>
@@ -582,6 +621,22 @@ footer{
             <li>High Lp(a) is associated with higher cardiovascular risk and aortic valve disease risk.</li>
             <li>Because it can run in families, relatives may benefit from testing.</li>
           </ul>
+            <div class="hero-appointment">
+              <div class="hero-appointment-image">
+                <img src="doctor.png" alt="Cardiologist at Central Florida Heart Care">
+              </div>
+              <div class="hero-appointment-content">
+                <h4>Ready to schedule?</h4>
+                <a class="btn primary"
+                  href="https://centralfloridaheartcare.com/lipoproteina/#schedule"
+                  target="_blank"
+                  rel="noopener">
+                  Schedule Appointment
+                </a>
+              </div>
+            </div>
+        </div>
+
         </div>
       </div>
     </header>
