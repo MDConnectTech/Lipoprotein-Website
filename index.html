@@ -442,6 +442,45 @@ footer{
 @media (prefers-reduced-motion: reduce){
   *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
 }
+    /* Appointment Section */
+.appointment-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:24px;
+  align-items:center;
+}
+
+.appointment-image img{
+  width:100%;
+  max-width:380px;
+  height:auto;
+  display:block;
+  margin:auto;
+}
+
+.appointment-content h2{
+  margin-top:0;
+  font-size:1.8rem;
+  color:var(--blue-900);
+}
+
+.appointment-content p{
+  max-width:55ch;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+
+/* Mobile */
+@media(max-width: 900px){
+  .appointment-grid{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .appointment-content p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
 
 /* Floating Back-to-Top button */
 #backToTop{
@@ -472,6 +511,7 @@ footer{
 @media (hover:hover){
   #backToTop:hover{ transform: translateY(-2px); }
 }
+    
   </style>
 </head>
 
@@ -717,7 +757,25 @@ footer{
         </div>
       </details>
     </section>
+    <section class="block" id="appointment">
+      <div class="appointment-grid">
+        <div class="appointment-image">
+          <img src="doctor.png" alt="Cardiologist at Central Florida Heart Care">
+        </div>
+        <div class="appointment-content">
+          <h2>Ready to schedule your appointment?</h2>
+          <p>
+            Our team at <strong>Central Florida Heart Care</strong> is here to help you understand your risk and create a personalized prevention plan.
+          </p>
 
+          <a class="btn primary" 
+            href="https://centralfloridaheartcare.com/lipoproteina/#schedule">
+            Schedule Appointment
+          </a>
+        </div>
+
+      </div>
+    </section>
     <footer>
       <strong>Medical disclaimer:</strong> This page is for educational purposes only and is not medical advice.
       It does not replace a conversation with a qualified clinician.
