@@ -38,8 +38,8 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--ink);
       background:
-        radial-gradient(900px 500px at 12% -5%, rgba(26,102,173,.18), transparent 55%),
-        radial-gradient(900px 500px at 92% -8%, rgba(217,58,74,.16), transparent 55%),
+        radial-gradient(900px 500px at 12% -5%, rgba(26,102,173,.12), transparent 58%),
+        radial-gradient(900px 500px at 92% -8%, rgba(217,58,74,.10), transparent 58%),
         var(--bg);
       line-height:1.6;
     }
@@ -60,12 +60,13 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      padding:14px 18px;
-      border-radius:18px;
-      background: rgba(255,255,255,.85);
-      backdrop-filter: blur(8px);
-      border:1px solid var(--line);
-      box-shadow: 0 6px 18px rgba(15,29,42,.06);
+      gap:14px;
+      padding:12px 14px;
+      border-radius:999px;
+      border:1px solid rgba(230,235,242,.9);
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 22px rgba(15,29,42,.06);
     }
 
     .brand{
@@ -75,12 +76,13 @@
       min-width:0;
     }
     .brand img{
-      height:42px;
+      height:34px;
       width:auto;
-      padding:0;
-      border:none;
-      background:none;
-      box-shadow:none;
+      border-radius:10px;
+      background:#fff;
+      padding:6px;
+      border:1px solid var(--line);
+      box-shadow: 0 6px 14px rgba(15,29,42,.06);
     }
     .brand-text{
       display:flex;
@@ -104,26 +106,33 @@
 
     .nav{
       display:flex;
+      gap:8px;
       align-items:center;
-      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
     .chip{
-      padding:6px 10px;
-      font-size:.85rem;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
       border-radius:999px;
-      background:transparent;
-      border:none;
-      font-weight:600;
-      color:var(--blue-900);
-      box-shadow:none;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.85);
+      color: var(--blue-900);
+      font-weight:800;
+      font-size:.92rem;
+      box-shadow: 0 6px 14px rgba(15,29,42,.05);
+      transition: transform .18s ease;
     }
-    .chip:hover{
-      background:rgba(26,102,173,.08);
+    .chip:hover{transform: translateY(-1px)}
+    .chip .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--red-600), var(--blue-600));
     }
-
 
     .btn{
-       display:inline-flex;
+      display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
@@ -136,21 +145,21 @@
       font-size:.92rem;
       box-shadow: 0 10px 20px rgba(15,29,42,.06);
       cursor:pointer;
-
-      text-decoration: none;
-      white-space: nowrap;
+      text-decoration:none; /* important for anchor buttons */
+      white-space:nowrap;
+      transition: transform .18s ease, box-shadow .18s ease;
     }
     .btn.primary{
       border:none;
       color:#fff;
       background: linear-gradient(135deg, var(--blue-700), var(--red-600));
-      padding:10px 16px;
-      font-weight:800;
-      box-shadow: 0 10px 20px rgba(17,79,138,.15);
+      box-shadow: 0 16px 28px rgba(17,79,138,.18);
     }
-
     .btn.ghost{
       background: rgba(255,255,255,.85);
+    }
+    @media (hover:hover){
+      .btn:hover{ transform: translateY(-1px); }
     }
 
     /* Hero */
@@ -172,7 +181,7 @@
       width:520px; height:520px; border-radius:50%;
       background: radial-gradient(circle at 35% 35%, rgba(217,58,74,.40), transparent 62%);
       opacity:.75;
-      pointer-events: none;
+      pointer-events:none;
     }
     .hero:after{
       content:"";
@@ -180,7 +189,7 @@
       width:560px; height:560px; border-radius:50%;
       background: radial-gradient(circle at 40% 40%, rgba(26,102,173,.42), transparent 62%);
       opacity:.65;
-      pointer-events: none;
+      pointer-events:none;
     }
 
     .hero-inner{
@@ -255,6 +264,50 @@
     }
     .hero-card ul{margin:0; padding-left:18px; color:var(--muted)}
     .hero-card li{margin:8px 0}
+
+    /* Separate Appointment Card (Hero right column) */
+    .hero-appointment-card{
+      margin-top:18px;
+      background:#ffffff;
+      border:1px solid rgba(230,235,242,.95);
+      border-radius:22px;
+      box-shadow:0 12px 22px rgba(15,29,42,.06);
+      padding:18px;
+    }
+    .appointment-grid{
+      display:grid;
+      grid-template-columns:140px 1fr;
+      gap:18px;
+      align-items:center;
+    }
+    .appointment-image img{
+      width:100%;
+      max-width:140px;
+      height:auto;
+      display:block;
+      filter: drop-shadow(0 18px 28px rgba(15,29,42,.15));
+    }
+    .appointment-content h3{
+      margin:0 0 8px;
+      font-size:1.2rem;
+      color:var(--blue-900);
+      letter-spacing:-.2px;
+    }
+    .appointment-content p{
+      margin:0 0 16px;
+      font-size:.95rem;
+      color:var(--muted);
+    }
+    .btn.appointment-btn{
+      font-size:1rem;
+      padding:14px 22px;
+      border:none;
+      border-radius:999px;
+      font-weight:900;
+      color:#fff;
+      background: linear-gradient(135deg, var(--blue-700), var(--red-600));
+      box-shadow:0 16px 28px rgba(17,79,138,.20);
+    }
 
     /* Section blocks */
     section.block{
@@ -376,6 +429,31 @@
     }
     .divider{height:1px; background:var(--line); margin: 12px 0}
 
+    /* Mobile: clean header (hide nav chips), tighten layout */
+    @media (max-width:768px){
+      .nav{ display:none; }
+      .brand-text span{ display:none; }
+      .topbar{ border-radius:16px; padding:10px 12px; }
+      .brand img{ height:30px; padding:5px; }
+      header.hero{ padding:20px 16px; border-radius:18px; }
+      h1{ font-size: 1.85rem; }
+      .hero:before, .hero:after{ display:none; }
+      .mini-row{ gap:10px; }
+      .btn{ width:100%; justify-content:center; }
+    }
+
+    /* Appointment card responsiveness */
+    @media(max-width:980px){
+      .appointment-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+      .appointment-image img{
+        max-width:200px;
+        margin:0 auto;
+      }
+    }
+
     /* Print */
     @media print{
       .sticky, .btn, .nav{display:none !important}
@@ -383,175 +461,11 @@
       header.hero{box-shadow:none}
       section.block, footer{box-shadow:none}
     }
-    /* ===================================== */
-/* CLEAN RESPONSIVE + SUBTLE MOTION LAYER */
-/* ===================================== */
 
-/* Cleaner background (less busy but still branded) */
-body{
-  background: radial-gradient(900px 500px at 12% -5%, rgba(26,102,173,.12), transparent 58%),
-              radial-gradient(900px 500px at 92% -8%, rgba(217,58,74,.10), transparent 58%),
-              var(--bg);
-}
-
-/* Smooth entrance animation */
-@keyframes fadeUp{
-  from{ opacity:0; transform: translateY(8px); }
-  to{ opacity:1; transform: translateY(0); }
-}
-
-header.hero,
-section.block,
-.tile,
-.hero-card,
-.callout,
-details,
-footer{
-  animation: fadeUp .5s ease both;
-}
-
-/* Subtle hover polish on desktop */
-@media (hover:hover){
-  .btn, .chip, .tile, details{
-    transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
-  }
-  .btn:hover, .chip:hover{ transform: translateY(-1px); }
-  .tile:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 18px 28px rgba(15,29,42,.08);
-  }
-}
-
-/* Mobile: ultra clean (no crowded chip nav) */
-@media (max-width:768px){
-  .nav{ display:none; }              /* hide chips on mobile */
-  .brand-text span{ display:none; }  /* hide subtitle line */
-
-  .topbar{ border-radius: 16px; padding: 10px 12px; }
-  .brand img{ height: 30px; padding: 5px; }
-
-  header.hero{ padding: 20px 16px; border-radius: 18px; }
-  h1{ font-size: 1.85rem; }
-
-  .hero:before, .hero:after{ display:none; } /* remove glow circles */
-  .mini-row{ gap:10px; }
-  .btn{ width:100%; justify-content:center; } /* stack buttons */
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
-}
-    /* Appointment Section */
-.appointment-grid{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:24px;
-  align-items:center;
-}
-
-.appointment-image img{
-  width:100%;
-  max-width:380px;
-  height:auto;
-  display:block;
-  margin:auto;
-  filter: drop-shadow(0 20px 30px rgba(15,29,42,.15));
-}
-
-.appointment-content h2{
-  margin-top:0;
-  font-size:1.8rem;
-  color:var(--blue-900);
-}
-
-.appointment-content p{
-  max-width:55ch;
-  color:var(--muted);
-  margin-bottom:18px;
-}
-
-/* Mobile */
-@media(max-width: 900px){
-  .appointment-grid{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-  .appointment-content p{
-    margin-left:auto;
-    margin-right:auto;
-  }
-}
-
-/* Floating Back-to-Top button */
-#backToTop{
-  position: fixed;
-  bottom: 18px;
-  right: 18px;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 900;
-  color: white;
-  background: linear-gradient(135deg, var(--blue-700), var(--red-600));
-  box-shadow: 0 10px 20px rgba(15,29,42,.15);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(6px);
-  transition: opacity .25s ease, transform .25s ease;
-  z-index: 999;
-}
-#backToTop.show{
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-@media (hover:hover){
-  #backToTop:hover{ transform: translateY(-2px); }
-}
-/* Compact hero appointment section */
-
-.hero-appointment{
-  margin-top:18px;
-  padding-top:16px;
-  border-top:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  gap:16px;
-}
-
-.hero-appointment-image img{
-  width:90px;
-  height:auto;
-  display:block;
-  filter: drop-shadow(0 12px 22px rgba(15,29,42,.15));
-}
-
-.hero-appointment-content h4{
-  margin:0 0 8px;
-  font-size:1rem;
-  color:var(--blue-900);
-}
-
-.hero-appointment-content .btn{
-  padding:8px 14px;
-  font-size:.9rem;
-}
-
-/* Mobile */
-@media(max-width:980px){
-  .hero-appointment{
-    flex-direction:column;
-    text-align:center;
-  }
-  .hero-appointment-image img{
-    width:130px;
-  }
-}
-    
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+    }
   </style>
 </head>
 
@@ -562,7 +476,7 @@ footer{
     <div class="sticky">
       <div class="topbar">
         <div class="brand">
-          <img src="logo.png" alt="Central Florida HeartCare logo" />
+          <img src="logo.png" alt="Central Florida Heart Care logo" />
           <div class="brand-text">
             <strong>Central Florida Heart Care</strong>
             <span>Lipoprotein(a) patient education</span>
@@ -575,10 +489,7 @@ footer{
           <a class="chip" href="#results"><span class="dot" aria-hidden="true"></span> Results</a>
           <a class="chip" href="#next"><span class="dot" aria-hidden="true"></span> Next steps</a>
           <a class="chip" href="#faq"><span class="dot" aria-hidden="true"></span> FAQs</a>
-          <a class="btn primary" href="https://centralfloridaheartcare.com/lipoproteina/" target="_blank" rel="noopener">Schedule Appointment
-          </a>
           <button class="btn ghost" onclick="window.print()" title="Print this page">Print</button>
-
         </div>
       </div>
     </div>
@@ -586,6 +497,8 @@ footer{
     <!-- Hero -->
     <header class="hero" id="overview">
       <div class="hero-inner">
+
+        <!-- LEFT SIDE -->
         <div>
           <div class="kicker"><span class="dot" aria-hidden="true"></span> Lipoprotein(a) / Lp(a)</div>
           <h1>Lipoprotein(a) [Lp(a)] — Patient Information</h1>
@@ -601,43 +514,53 @@ footer{
           </div>
 
           <div class="mini-row" style="margin-top:14px;">
-            <a class="btn primary" href="https://centralfloridaheartcare.com/lipoproteina/" target="_blank" rel="noopener"> Schedule Appointment
-            </a>
             <a class="btn" href="#test">When to get tested</a>
             <a class="btn" href="#results">What results mean</a>
             <a class="btn" href="#faq">FAQs</a>
           </div>
-
 
           <p class="small" style="margin-top:12px;">
             Provided by <strong>Central Florida Heart Care</strong>. Educational information only (not medical advice).
           </p>
         </div>
 
-        <div class="hero-card">
-          <h3>Key takeaways</h3>
-          <ul>
-            <li>Some people can have a normal LDL and still have high Lp(a).</li>
-            <li>High Lp(a) is associated with higher cardiovascular risk and aortic valve disease risk.</li>
-            <li>Because it can run in families, relatives may benefit from testing.</li>
-          </ul>
-            <div class="hero-appointment">
-              <div class="hero-appointment-image">
+        <!-- RIGHT SIDE -->
+        <div>
+          <!-- Key Takeaways Card -->
+          <div class="hero-card">
+            <h3>Key takeaways</h3>
+            <ul>
+              <li>Some people can have a normal LDL and still have high Lp(a).</li>
+              <li>High Lp(a) is associated with higher cardiovascular risk and aortic valve disease risk.</li>
+              <li>Because it can run in families, relatives may benefit from testing.</li>
+            </ul>
+          </div>
+
+          <!-- Separate Appointment Card -->
+          <div class="hero-appointment-card">
+            <div class="appointment-grid">
+              <div class="appointment-image">
                 <img src="doctor.png" alt="Cardiologist at Central Florida Heart Care">
               </div>
-              <div class="hero-appointment-content">
-                <h4>Ready to schedule?</h4>
-                <a class="btn primary"
-                  href="https://centralfloridaheartcare.com/lipoproteina/#schedule"
-                  target="_blank"
-                  rel="noopener">
+
+              <div class="appointment-content">
+                <h3>Ready to schedule your appointment?</h3>
+                <p>
+                  Our team at <strong>Central Florida Heart Care</strong> is here to help you understand your risk
+                  and create a personalized prevention plan.
+                </p>
+
+                <a class="btn appointment-btn"
+                   href="https://centralfloridaheartcare.com/lipoproteina/#schedule"
+                   target="_blank"
+                   rel="noopener">
                   Schedule Appointment
                 </a>
               </div>
             </div>
+          </div>
         </div>
 
-        </div>
       </div>
     </header>
 
@@ -813,25 +736,7 @@ footer{
         </div>
       </details>
     </section>
-    <section class="block" id="appointment">
-      <div class="appointment-grid">
-        <div class="appointment-image">
-          <img src="doctor.png" alt="Cardiologist at Central Florida Heart Care">
-        </div>
-        <div class="appointment-content">
-          <h2>Ready to schedule your appointment?</h2>
-          <p>
-            Our team at <strong>Central Florida Heart Care</strong> is here to help you understand your risk and create a personalized prevention plan.
-          </p>
 
-          <a class="btn primary" 
-            href="https://centralfloridaheartcare.com/lipoproteina/#schedule">
-            Schedule Appointment
-          </a>
-        </div>
-
-      </div>
-    </section>
     <footer>
       <strong>Medical disclaimer:</strong> This page is for educational purposes only and is not medical advice.
       It does not replace a conversation with a qualified clinician.
