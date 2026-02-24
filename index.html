@@ -216,6 +216,37 @@
     .box ul{margin:0; padding-left:18px; color:var(--muted)}
     .box li{margin:8px 0}
 
+    .test-card h3{
+      margin-bottom:14px;
+    }
+    .step{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      margin-bottom:16px;
+    }
+
+    .step:last-child{
+      margin-bottom:0;
+    }
+
+    .step-icon{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background: linear-gradient(135deg, var(--blue-700), var(--red-600));
+      color:#fff;
+      font-weight:900;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+      box-shadow: 0 8px 16px rgba(15,29,42,.15);
+    }
+    .step p{
+      margin:6px 0 0;
+      color:var(--muted);
+    }
     /* BIGGER doctor emphasis */
     .appt{
       display:grid;
@@ -231,10 +262,13 @@
       display:flex; align-items:center; justify-content:center;
       box-shadow: 0 14px 24px rgba(15,29,42,.10);
       overflow:hidden;
+      padding:10px;
     }
     .appt-img img{
-      width:112%;
-      height:auto;
+      width:100%;
+      height:100%;
+      object-fit: contain;        /* KEY FIX */
+      object-position:center;
       transform:none !important;
       display:block;
     }
@@ -366,13 +400,26 @@
       width:150px; height:150px;
       border-radius:50%;
       margin:4px auto 10px;
-      display:grid;
-      place-items:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px
       color:#fff;
       font-weight:1000;
       font-size:3.0rem;
       letter-spacing:-1px;
       box-shadow: 0 18px 30px rgba(15,29,42,.12);
+    }
+    .circle .num{
+      font-size:3.0rem;
+      line-height:1;
+    }
+
+    .circle .pct{
+      font-size:1.5rem;             /* smaller than number */
+      line-height:1;
+      opacity:.95;
+      transform: translateY(2px);   /* visually centers % */
     }
     .circle small{font-size:1.2rem; opacity:.9; margin-left:2px}
     .circle.red{background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), transparent 35%), linear-gradient(135deg, var(--red-600), #ff4e5e)}
@@ -618,7 +665,7 @@
     <section class="stats fade" aria-label="Quick facts">
       <h2>Lp(a) is genetic — and often missed</h2>
       <p class="subhead">
-        These quick facts help explain why many people don’t know their Lp(a) level. :contentReference[oaicite:1]{index=1}
+        These quick facts help explain why many people don’t know their Lp(a) level.
       </p>
 
       <div class="icon-grid">
@@ -640,7 +687,7 @@
             </svg>
           </div>
           <p>1 in 5 people</p>
-          <span>may have high Lp(a) — and not know it. :contentReference[oaicite:2]{index=2}</span>
+          <span>may have high Lp(a) — and not know it. </span>
         </div>
 
         <div class="icon-card">
@@ -658,7 +705,7 @@
             </svg>
           </div>
           <p>Higher stroke risk</p>
-          <span>Elevated Lp(a) can increase stroke risk by ~60%. :contentReference[oaicite:3]{index=3}</span>
+          <span>Elevated Lp(a) can increase stroke risk by ~60%.</span>
         </div>
 
         <div class="icon-card">
@@ -676,7 +723,7 @@
             </svg>
           </div>
           <p>Often not checked</p>
-          <span>About 90% of doctors don’t regularly check Lp(a). :contentReference[oaicite:4]{index=4}</span>
+          <span>About 90% of doctors don’t regularly check Lp(a). </span>
         </div>
       </div>
     </section>
@@ -691,12 +738,12 @@
       <div class="survey-grid">
         <div class="circle-row">
           <div class="circle-card">
-            <div class="circle red">74<small>%</small></div>
+            <div class="circle red"><span class="num">74</span><span class="pct">%</span></div>
             <div class="label">Do not know their personal Lp(a) level</div>
           </div>
 
           <div class="circle-card">
-            <div class="circle navy">54<small>%</small></div>
+            <div class="circle navy"><span class="num">54</span><span class="pct">%</span></div>
             <div class="label">Do not know if their personal LDL-C is &lt; 100 mg/dL</div>
           </div>
         </div>
@@ -755,17 +802,24 @@
             <li>Heart disease despite “normal” routine cholesterol results</li>
           </ul>
         </div>
-        <div class="tile">
+        <div class="tile test-card">
           <h3>How to get tested</h3>
-          <p>
-            It’s a simple blood test. Ask your clinician to add “Lp(a)” to your labs — it is not always included in a standard cholesterol panel.
-          </p>
-          <p style="margin-top:10px;">
-            If your Lp(a) is high, your clinician may recommend testing close relatives too.
-          </p>
-        </div>
-      </div>
-    </section>
+          <div class="step">
+            <div class="step-icon">1</div>
+            <div>
+              <strong>Ask for Lp(a)</strong>
+              <p>It’s a simple blood test. Ask your clinician to add “Lp(a)” to your labs — it’s not always included in routine cholesterol testing.</p>
+            </div>
+          </div>
+
+  <div class="step">
+    <div class="step-icon">2</div>
+    <div>
+      <strong>If elevated</strong>
+      <p>If your level is high, your clinician may recommend testing close family members as well.</p>
+    </div>
+  </div>
+</div>
 
     <section class="block fade" id="faq">
       <h2>FAQs</h2>
