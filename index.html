@@ -8,7 +8,7 @@
 
   <style>
     :root{
-      /* Brand-ish palette (red + blue) */
+      /* Brand palette (blue + red) */
       --blue-900:#0b2d4d;
       --blue-700:#114f8a;
       --blue-600:#1a66ad;
@@ -22,10 +22,8 @@
       --ink:#0f1d2a;
       --muted:#4b5b6a;
       --bg:#f6f8fc;
-      --card:#ffffff;
       --line:#e6ebf2;
 
-      --radius:18px;
       --shadow: 0 10px 26px rgba(15,29,42,.08);
       --shadow2: 0 6px 16px rgba(15,29,42,.08);
       --max: 1120px;
@@ -37,11 +35,14 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--ink);
-      background:
-        radial-gradient(900px 500px at 12% -5%, rgba(26,102,173,.12), transparent 58%),
-        radial-gradient(900px 500px at 92% -8%, rgba(217,58,74,.10), transparent 58%),
-        var(--bg);
       line-height:1.6;
+
+      /* More color (less white) */
+      background:
+        radial-gradient(1100px 600px at 10% -10%, rgba(26,102,173,.22), transparent 60%),
+        radial-gradient(1100px 600px at 92% -12%, rgba(217,58,74,.20), transparent 60%),
+        radial-gradient(900px 520px at 50% 120%, rgba(26,102,173,.12), transparent 55%),
+        linear-gradient(180deg, #f4f7ff 0%, #f7f2f7 45%, #f6f8fc 100%);
     }
 
     a{color:var(--blue-700); text-decoration:none}
@@ -61,10 +62,12 @@
       align-items:center;
       justify-content:space-between;
       gap:18px;
-      padding:12px 20px;
-      border-radius:18px;
+
+      padding:12px 20px;         /* slimmer */
+      border-radius:18px;        /* less “pill” */
+
       border:1px solid rgba(230,235,242,.9);
-      background: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.75);
       backdrop-filter: blur(10px);
       box-shadow: 0 6px 16px rgba(15,29,42,.06);
     }
@@ -75,12 +78,14 @@
       gap:12px;
       min-width:0;
     }
+
     .brand img{
       height:52px;
       width:auto;
       display:block;
-      transform: none !important;
+      transform:none !important; /* prevents mobile flip/rotate */
     }
+
     .brand-text{
       display:flex;
       flex-direction:column;
@@ -142,10 +147,9 @@
       font-size:.92rem;
       box-shadow: 0 10px 20px rgba(15,29,42,.06);
       cursor:pointer;
-      text-decoration:none; /* important for anchor buttons */
-      white-space:nowrap;
       transition: transform .18s ease, box-shadow .18s ease;
     }
+    .btn:hover{transform: translateY(-1px)}
     .btn.primary{
       border:none;
       color:#fff;
@@ -154,9 +158,6 @@
     }
     .btn.ghost{
       background: rgba(255,255,255,.85);
-    }
-    @media (hover:hover){
-      .btn:hover{ transform: translateY(-1px); }
     }
 
     /* Hero */
@@ -178,7 +179,6 @@
       width:520px; height:520px; border-radius:50%;
       background: radial-gradient(circle at 35% 35%, rgba(217,58,74,.40), transparent 62%);
       opacity:.75;
-      pointer-events:none;
     }
     .hero:after{
       content:"";
@@ -186,7 +186,6 @@
       width:560px; height:560px; border-radius:50%;
       background: radial-gradient(circle at 40% 40%, rgba(26,102,173,.42), transparent 62%);
       opacity:.65;
-      pointer-events:none;
     }
 
     .hero-inner{
@@ -207,6 +206,10 @@
       color: var(--muted);
       font-weight:800;
       width: fit-content;
+    }
+    .kicker .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--red-600), var(--blue-600));
     }
 
     h1{
@@ -246,6 +249,12 @@
       display:inline-block;
     }
 
+    .hero-right{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
     .hero-card{
       background: rgba(255,255,255,.88);
       border:1px solid rgba(230,235,242,.9);
@@ -262,54 +271,59 @@
     .hero-card ul{margin:0; padding-left:18px; color:var(--muted)}
     .hero-card li{margin:8px 0}
 
-    /* Separate Appointment Card (Hero right column) */
-    .hero-appointment-card{
-      margin-top:18px;
-      background:#ffffff;
+    /* Appointment card (bottom-right under Key takeaways) */
+    .appt-card{
+      background: rgba(255,255,255,.92);
       border:1px solid rgba(230,235,242,.95);
-      border-radius:22px;
-      box-shadow:0 12px 22px rgba(15,29,42,.06);
-      padding:18px;
-    }
-    .appointment-grid{
+      border-radius: 22px;
+      padding:16px;
+      box-shadow: var(--shadow2);
       display:grid;
-      grid-template-columns:140px 1fr;
-      gap:18px;
+      grid-template-columns: 86px 1fr;
+      gap:14px;
       align-items:center;
     }
-    .appointment-image img{
-      width:100%;
-      max-width:140px;
+    .appt-card img{
+      width:86px;
       height:auto;
       display:block;
-      filter: drop-shadow(0 18px 28px rgba(15,29,42,.15));
+      filter: drop-shadow(0 10px 18px rgba(15,29,42,.12));
     }
-    .appointment-content h3{
-      margin:0 0 8px;
-      font-size:1.2rem;
+    .appt-card h3{
+      margin:0;
+      font-size:1.15rem;
       color:var(--blue-900);
       letter-spacing:-.2px;
+      line-height:1.2;
     }
-    .appointment-content p{
-      margin:0 0 16px;
-      font-size:.95rem;
+    .appt-card p{
+      margin:8px 0 12px;
       color:var(--muted);
+      font-size:.98rem;
+      line-height:1.45;
     }
-    .btn.appointment-btn{
-      font-size:1rem;
-      padding:14px 22px;
-      border:none;
+    .appt-card .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;           /* bigger button */
       border-radius:999px;
-      font-weight:900;
+      border:none;
+      font-weight:1000;
       color:#fff;
       background: linear-gradient(135deg, var(--blue-700), var(--red-600));
-      box-shadow:0 16px 28px rgba(17,79,138,.20);
+      box-shadow: 0 16px 28px rgba(17,79,138,.18);
+      cursor:pointer;
+      text-decoration:none;
+      width: fit-content;
     }
+    .appt-card .cta:hover{transform: translateY(-1px)}
+    .appt-card .cta:active{transform: translateY(0)}
 
     /* Section blocks */
     section.block{
       margin-top: 16px;
-      background: rgba(255,255,255,.88);
+      background: rgba(255,255,255,.78); /* slightly tinted, less “white” */
       border: 1px solid rgba(230,235,242,.95);
       border-radius: 22px;
       box-shadow: var(--shadow2);
@@ -343,6 +357,11 @@
       background:#fff;
       padding: 14px;
       box-shadow: 0 10px 18px rgba(15,29,42,.06);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .tile:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 28px rgba(15,29,42,.08);
     }
     .tile .label{
       display:inline-flex;
@@ -426,29 +445,213 @@
     }
     .divider{height:1px; background:var(--line); margin: 12px 0}
 
-    /* Mobile: clean header (hide nav chips), tighten layout */
+    /* =====================================
+       SURVEY SAYS… (EXACT INFO + GRAPH LOOK)
+       ===================================== */
+    .survey{
+      margin-top: 16px;
+      border-radius: 26px;
+      border:1px solid rgba(230,235,242,.95);
+      background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.85));
+      box-shadow: var(--shadow);
+      padding: 28px 22px;
+    }
+
+    .survey h2{
+      margin: 0;
+      text-align:center;
+      font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+      color: var(--blue-900);
+      letter-spacing: -.4px;
+    }
+
+    .survey .subhead{
+      margin: 10px auto 0;
+      max-width: 90ch;
+      text-align:center;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.5;
+    }
+
+    .survey-grid{
+      margin-top: 24px;
+      display:grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 22px;
+      align-items:center;
+    }
+
+    @media (max-width: 980px){
+      .survey-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* LEFT: big circles */
+    .survey-circles{
+      display:flex;
+      gap: 26px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .big-circle{
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      display:grid;
+      place-items:center;
+      position:relative;
+      box-shadow: 0 18px 30px rgba(15,29,42,.12);
+    }
+
+    .big-circle.red{
+      background: radial-gradient(circle at 30% 30%, #ff5a66, var(--red-600) 55%, #b01224 100%);
+    }
+
+    .big-circle.navy{
+      background: radial-gradient(circle at 30% 30%, #2c3242, #141a28 55%, #0b0f1a 100%);
+    }
+
+    .big-circle .num{
+      font-weight: 1000;
+      font-size: 4.1rem;
+      color:#fff;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+    .big-circle .pct{
+      margin-top: 8px;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color:#fff;
+      opacity:.95;
+    }
+
+    .circle-caption{
+      margin-top: 12px;
+      text-align:center;
+      max-width: 210px;
+      color: var(--muted);
+      font-size: .98rem;
+      line-height: 1.35;
+    }
+
+    /* RIGHT: stacked stat cards */
+    .survey-cards{
+      display:flex;
+      flex-direction:column;
+      gap: 16px;
+    }
+
+    .stat-card{
+      background:#fff;
+      border:1px solid rgba(230,235,242,.95);
+      border-radius: 18px;
+      box-shadow: 0 14px 24px rgba(15,29,42,.10);
+      padding: 18px 18px 18px 16px;
+      position:relative;
+      overflow:hidden;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+    }
+
+    .stat-card:before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width: 6px;
+      background: var(--red-600);
+    }
+    .stat-card.navy:before{ background: #121a2b; }
+
+    .stat-left{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      min-width:0;
+    }
+
+    .stat-badge{
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display:grid;
+      place-items:center;
+      font-weight: 1000;
+      color:#fff;
+      flex: 0 0 auto;
+      box-shadow: 0 10px 18px rgba(15,29,42,.10);
+    }
+    .stat-card.red .stat-badge{ background: var(--red-600); }
+    .stat-card.navy .stat-badge{ background: #121a2b; }
+
+    .stat-text{
+      min-width:0;
+    }
+    .stat-text .pct{
+      font-size: 2rem;
+      font-weight: 1000;
+      letter-spacing: -.6px;
+      margin:0;
+      line-height:1.05;
+    }
+    .stat-card.red .stat-text .pct{ color: var(--red-600); }
+    .stat-card.navy .stat-text .pct{ color: #121a2b; }
+
+    .stat-text .desc{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: .98rem;
+      line-height: 1.3;
+    }
+
+    .stat-arrow{
+      width:0;
+      height:0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-bottom: 16px solid var(--red-600);
+      opacity:.95;
+      flex: 0 0 auto;
+    }
+    .stat-card.navy .stat-arrow{
+      border-bottom-color: #121a2b;
+    }
+
+    .survey-footnote{
+      margin-top: 14px;
+      font-size: .9rem;
+      color: var(--muted);
+      text-align:center;
+    }
+
+    @media (max-width: 520px){
+      .big-circle{ width: 180px; height: 180px; }
+      .big-circle .num{ font-size: 3.4rem; }
+    }
+
+    /* Mobile: keep it clean */
     @media (max-width:768px){
       .nav{ display:none; }
       .brand-text span{ display:none; }
-      .topbar{ border-radius:16px; padding:14px 16px; }
-      .brand img{ height:48px; }
-      header.hero{ padding:20px 16px; border-radius:18px; }
-      h1{ font-size: 1.85rem; }
-      .hero:before, .hero:after{ display:none; }
-      .mini-row{ gap:10px; }
-      .btn{ width:100%; justify-content:center; }
-    }
 
-    /* Appointment card responsiveness */
-    @media(max-width:980px){
-      .appointment-grid{
-        grid-template-columns:1fr;
-        text-align:center;
-      }
-      .appointment-image img{
-        max-width:200px;
-        margin:0 auto;
-      }
+      .topbar{ border-radius:16px; padding:10px 12px; }
+      .brand img{ height:44px; }
+
+      header.hero{ padding: 20px 16px; border-radius: 18px; }
+      h1{ font-size: 1.85rem; }
+
+      .hero:before, .hero:after{ display:none; }
+
+      .btn{ width:100%; justify-content:center; }
+      .appt-card{ grid-template-columns: 1fr; text-align:left; }
+      .appt-card img{ width: 120px; margin: 0 auto; }
+      .appt-card .cta{ width:100%; }
     }
 
     /* Print */
@@ -456,12 +659,12 @@
       .sticky, .btn, .nav{display:none !important}
       body{background:#fff}
       header.hero{box-shadow:none}
-      section.block, footer{box-shadow:none}
+      section.block, footer, .survey{box-shadow:none}
     }
 
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
-      *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+      *{ transition:none !important; scroll-behavior:auto !important; }
     }
   </style>
 </head>
@@ -469,10 +672,11 @@
 <body>
   <div class="wrap">
 
-    <!-- Sticky top header -->
+    <!-- Top header -->
     <div class="sticky">
       <div class="topbar">
         <div class="brand">
+          <!-- Put your padded logo file here (rename to logo.png) -->
           <img src="logo.png" alt="Central Florida Heart Care logo" />
           <div class="brand-text">
             <strong>Central Florida Heart Care</strong>
@@ -494,14 +698,14 @@
     <!-- Hero -->
     <header class="hero" id="overview">
       <div class="hero-inner">
-
-        <!-- LEFT SIDE -->
         <div>
           <div class="kicker"><span class="dot" aria-hidden="true"></span> Lipoprotein(a) / Lp(a)</div>
           <h1>Lipoprotein(a) [Lp(a)] — Patient Information</h1>
+
+          <!-- Simplified patient-friendly intro -->
           <p class="sub">
-            Lp(a) is a cholesterol-carrying particle that is mostly determined by genetics.
-            It is not always included in routine cholesterol testing, so many people don’t know their level.
+            Lipoprotein(a), or Lp(a), is a particle in your blood that is mostly inherited (runs in families).
+            It isn’t always checked on routine cholesterol tests—so many people don’t know their level.
           </p>
 
           <div class="mini-row">
@@ -521,9 +725,8 @@
           </p>
         </div>
 
-        <!-- RIGHT SIDE -->
-        <div>
-          <!-- Key Takeaways Card -->
+        <div class="hero-right">
+          <!-- Key takeaways -->
           <div class="hero-card">
             <h3>Key takeaways</h3>
             <ul>
@@ -533,33 +736,100 @@
             </ul>
           </div>
 
-          <!-- Separate Appointment Card -->
-          <div class="hero-appointment-card">
-            <div class="appointment-grid">
-              <div class="appointment-image">
-                <img src="doctor.png" alt="Cardiologist at Central Florida Heart Care">
-              </div>
+          <!-- Appointment card (bottom-right box) -->
+          <div class="appt-card" aria-label="Schedule appointment">
+            <!-- Put your doctor image in repo as doctor.png -->
+            <img src="doctor.png" alt="Clinician illustration" />
+            <div>
+              <h3>Ready to schedule your appointment?</h3>
+              <p>
+                Our team at <strong>Central Florida Heart Care</strong> is here to help you understand your risk and build a personalized prevention plan.
+              </p>
+              <!-- You said WordPress + you control it. Use an anchor (#) if you want it to jump to a section on that page. -->
+              <a class="cta" href="https://centralfloridaheartcare.com/lipoproteina/" target="_blank" rel="noopener">
+                Schedule Appointment
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-              <div class="appointment-content">
-                <h3>Ready to schedule your appointment?</h3>
-                <p>
-                  Our team at <strong>Central Florida Heart Care</strong> is here to help you understand your risk
-                  and create a personalized prevention plan.
-                </p>
+    <!-- Survey Says… (placed right after hero for maximum impact) -->
+    <section class="survey" id="survey">
+      <h2>Survey Says...</h2>
+      <p class="subhead">
+        According to a previous survey conducted by multiple physicians attending the ASPC 2025 Congress on Cardiovascular Disease Prevention
+      </p>
 
-                <a class="btn appointment-btn"
-                   href="https://centralfloridaheartcare.com/lipoproteina/#schedule"
-                   target="_blank"
-                   rel="noopener">
-                  Schedule Appointment
-                </a>
+      <div class="survey-grid">
+        <!-- LEFT: big circles -->
+        <div>
+          <div class="survey-circles">
+            <div>
+              <div class="big-circle red" aria-label="74 percent do not know their personal Lp(a) level">
+                <div style="text-align:center;">
+                  <div class="num">74</div>
+                  <div class="pct">%</div>
+                </div>
               </div>
+              <div class="circle-caption">Do not know their<br/>personal Lp(a) level</div>
+            </div>
+
+            <div>
+              <div class="big-circle navy" aria-label="54 percent do not know if their personal LDL-C is less than 100 mg/dL">
+                <div style="text-align:center;">
+                  <div class="num">54</div>
+                  <div class="pct">%</div>
+                </div>
+              </div>
+              <div class="circle-caption">Do not know if their<br/>personal LDL-C is &lt;<br/>100mg/dL</div>
             </div>
           </div>
         </div>
 
+        <!-- RIGHT: stacked cards -->
+        <div class="survey-cards">
+          <div class="stat-card red">
+            <div class="stat-left">
+              <div class="stat-badge">16</div>
+              <div class="stat-text">
+                <p class="pct">16%</p>
+                <p class="desc">Have Lp(a) levels above 125 nmol/L</p>
+              </div>
+            </div>
+            <div class="stat-arrow" aria-hidden="true"></div>
+          </div>
+
+          <div class="stat-card navy">
+            <div class="stat-left">
+              <div class="stat-badge">11</div>
+              <div class="stat-text">
+                <p class="pct">11%</p>
+                <p class="desc">Have hs-CRP levels above 3.0 mg/L</p>
+              </div>
+            </div>
+            <div class="stat-arrow" aria-hidden="true"></div>
+          </div>
+
+          <div class="stat-card red">
+            <div class="stat-left">
+              <div class="stat-badge">46</div>
+              <div class="stat-text">
+                <p class="pct">46%</p>
+                <p class="desc">Have LDL-C levels above 100 mg/dL</p>
+              </div>
+            </div>
+            <div class="stat-arrow" aria-hidden="true"></div>
+          </div>
+        </div>
       </div>
-    </header>
+
+      <!-- Footnote (you asked to add) -->
+      <div class="survey-footnote">
+        * Survey summary as shown: physicians attending ASPC 2025 Congress on Cardiovascular Disease Prevention. Statistics displayed are from that survey summary.
+      </div>
+    </section>
 
     <!-- At a glance -->
     <section class="block">
@@ -571,7 +841,7 @@
           <div class="label"><span class="dot" aria-hidden="true"></span> What it is</div>
           <h3>Lipoprotein(a) [Lp(a)]</h3>
           <p>
-            Lp(a) is a type of lipoprotein (a “carrier” in the blood). Like LDL, it contains ApoB, but Lp(a) also includes an additional protein called Apo(a).
+            Lp(a) is a type of “cholesterol carrier” in the blood. It’s similar to LDL, but has an extra protein attached.
             Higher levels can contribute to plaque buildup in arteries.
           </p>
         </div>
@@ -580,8 +850,8 @@
           <div class="label red"><span class="dot" aria-hidden="true"></span> Why it matters</div>
           <h3>Risk can be “silent”</h3>
           <p>
-            People with high Lp(a) can have increased risk for heart attack, stroke, peripheral artery disease (PAD), and aortic stenosis.
-            Many people feel well until a serious event occurs.
+            Higher Lp(a) can raise the chance of heart and blood vessel problems over time.
+            Many people feel fine—so testing helps you plan early.
           </p>
         </div>
 
@@ -589,7 +859,8 @@
           <div class="label"><span class="dot" aria-hidden="true"></span> What you can do</div>
           <h3>Use it for a plan</h3>
           <p>
-            Lp(a) is often genetic and may not change much. The goal is to reduce overall cardiovascular risk with the right targets and treatments for you.
+            Lp(a) usually doesn’t change much. The goal is to lower your overall heart risk by optimizing LDL, blood pressure,
+            and healthy habits.
           </p>
         </div>
       </div>
@@ -632,15 +903,17 @@
     <!-- Results -->
     <section class="block" id="results">
       <h2>What do Lp(a) results mean?</h2>
-      <p class="lead">Lp(a) can be reported in mg/dL or nmol/L. Your clinician interprets it in context with your overall risk.</p>
+      <p class="lead">
+        Your result may be reported in mg/dL or nmol/L. Ask your clinician which number matters for your lab and your risk.
+      </p>
 
       <div class="grid-2">
         <div class="tile">
           <div class="label red"><span class="dot" aria-hidden="true"></span> Interpreting results</div>
           <h3>Units and thresholds</h3>
           <p>
-            A commonly used “elevated” threshold in many patient resources is <strong>&gt; 50 mg/dL</strong> (or <strong>&gt; 125 nmol/L</strong>).
-            Your clinician may use a different threshold depending on your lab and clinical situation.
+            Many resources call Lp(a) “elevated” above <strong>&gt; 50 mg/dL</strong> (or <strong>&gt; 125 nmol/L</strong>).
+            Your clinician may use a different cutoff depending on your situation.
           </p>
           <p class="small" style="margin-top:10px;">
             If you have questions, ask your care team what your specific number means for you.
