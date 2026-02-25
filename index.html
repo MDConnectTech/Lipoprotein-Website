@@ -4,20 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Lipoprotein(a) [Lp(a)] — Central Florida Heart Care</title>
-  <meta name="description" content="Central Florida Heart Care patient information page on Lipoprotein(a) [Lp(a)]: what it is, why it matters, when to test, and what to do next." />
+  <meta name="description" content="Patient-friendly Lipoprotein(a) [Lp(a)] info: what it is, why it matters, who should test, what results mean, and next steps. Provided by Central Florida Heart Care." />
 
   <style>
     :root{
-      --blue-950:#071a2e;
       --blue-900:#0b2d4d;
+      --blue-800:#0d3a63;
       --blue-700:#114f8a;
       --blue-600:#1a66ad;
-      --blue-200:#cfe2ff;
+      --blue-200:#cfe4ff;
       --blue-100:#e9f2ff;
 
       --red-700:#b0192a;
       --red-600:#c01f31;
       --red-500:#d93a4a;
+      --red-200:#ffd1d7;
       --red-100:#ffecef;
 
       --ink:#0f1d2a;
@@ -27,8 +28,9 @@
       --line:#e6ebf2;
 
       --radius:18px;
-      --shadow: 0 10px 26px rgba(15,29,42,.08);
-      --shadow2: 0 6px 16px rgba(15,29,42,.08);
+      --radius-lg:24px;
+      --shadow: 0 18px 36px rgba(15,29,42,.10);
+      --shadow2: 0 10px 22px rgba(15,29,42,.08);
       --max: 1120px;
     }
 
@@ -39,33 +41,36 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--ink);
       background:
-        radial-gradient(1100px 520px at 10% -8%, rgba(26,102,173,.18), transparent 58%),
-        radial-gradient(1100px 520px at 95% -10%, rgba(217,58,74,.16), transparent 58%),
-        radial-gradient(900px 420px at 15% 115%, rgba(26,102,173,.10), transparent 55%),
-        radial-gradient(900px 420px at 90% 120%, rgba(217,58,74,.10), transparent 55%),
+        radial-gradient(1100px 650px at 10% -5%, rgba(26,102,173,.18), transparent 60%),
+        radial-gradient(1100px 650px at 95% -10%, rgba(217,58,74,.16), transparent 58%),
+        radial-gradient(900px 500px at 50% 110%, rgba(26,102,173,.10), transparent 55%),
         var(--bg);
-      line-height:1.6;
+      line-height:1.65;
     }
 
     a{color:var(--blue-700); text-decoration:none}
     a:hover{text-decoration:underline}
 
-    .wrap{max-width:var(--max); margin:0 auto; padding:14px 18px 28px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:16px 16px 30px}
 
-    /* Sticky header */
-    .sticky{ position:sticky; top:10px; z-index:30; }
+    /* ======= TOP BAR (smaller + cleaner) ======= */
+    .sticky{
+      position:sticky;
+      top:10px;
+      z-index:50;
+    }
 
     .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(230,235,242,.9);
-      background: rgba(255,255,255,.76);
+      gap:12px;
+      padding:10px 12px;              /* smaller */
+      border-radius:18px;             /* not huge pill */
+      border:1px solid rgba(230,235,242,.95);
+      background: rgba(255,255,255,.82);
       backdrop-filter: blur(10px);
-      box-shadow: 0 8px 22px rgba(15,29,42,.06);
+      box-shadow: 0 10px 24px rgba(15,29,42,.08);
     }
 
     .brand{
@@ -74,27 +79,36 @@
       gap:12px;
       min-width:0;
     }
+
     .brand img{
+      width:64px;                     /* consistent logo size */
       height:44px;
-      width:auto;
-      border-radius:12px;
-      background:#fff;
-      padding:8px;
-      border:1px solid var(--line);
-      box-shadow: 0 6px 14px rgba(15,29,42,.06);
       object-fit:contain;
-      image-rendering:auto;
+      border-radius:14px;
+      background:#fff;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      box-shadow: 0 8px 18px rgba(15,29,42,.06);
+
+      /* Fix weird mobile rotation/orientation issues */
+      image-orientation: none;
+      transform:none !important;
     }
-    .brand-text{ display:flex; flex-direction:column; min-width:0; }
+
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+    }
     .brand-text strong{
       font-size:1.02rem;
-      letter-spacing:.2px;
+      letter-spacing:.1px;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
     .brand-text span{
-      font-size:.86rem;
+      font-size:.88rem;
       color:var(--muted);
       white-space:nowrap;
       overflow:hidden;
@@ -108,24 +122,27 @@
       flex-wrap:wrap;
       justify-content:flex-end;
     }
+
     .chip{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding:8px 11px;
+      padding:8px 12px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.90);
+      border:1px solid rgba(230,235,242,.95);
+      background: rgba(255,255,255,.88);
       color: var(--blue-900);
-      font-weight:850;
+      font-weight:900;
       font-size:.92rem;
-      box-shadow: 0 6px 14px rgba(15,29,42,.05);
-      transition: transform .18s ease;
+      box-shadow: 0 8px 16px rgba(15,29,42,.06);
+      transition: transform .16s ease, box-shadow .16s ease;
     }
-    .chip:hover{transform: translateY(-1px)}
     .chip .dot{
       width:10px; height:10px; border-radius:50%;
       background: linear-gradient(135deg, var(--red-600), var(--blue-600));
+    }
+    @media (hover:hover){
+      .chip:hover{ transform: translateY(-1px); box-shadow: 0 14px 22px rgba(15,29,42,.10); }
     }
 
     .btn{
@@ -135,89 +152,78 @@
       gap:10px;
       padding:9px 12px;
       border-radius:999px;
-      border:1px solid var(--line);
+      border:1px solid rgba(230,235,242,.95);
       background:#fff;
       color:var(--blue-900);
       font-weight:900;
       font-size:.92rem;
-      box-shadow: 0 10px 20px rgba(15,29,42,.06);
+      box-shadow: 0 10px 18px rgba(15,29,42,.06);
       cursor:pointer;
-      transition: transform .18s ease, box-shadow .18s ease;
-      white-space:nowrap;
+      transition: transform .16s ease, box-shadow .16s ease;
     }
-    .btn:hover{ transform: translateY(-1px); }
     .btn.primary{
       border:none;
       color:#fff;
       background: linear-gradient(135deg, var(--blue-700), var(--red-600));
-      box-shadow: 0 16px 28px rgba(17,79,138,.18);
+      box-shadow: 0 18px 30px rgba(17,79,138,.20);
     }
-    .btn.ghost{ background: rgba(255,255,255,.90); }
+    @media (hover:hover){
+      .btn:hover{ transform: translateY(-1px); box-shadow: 0 18px 26px rgba(15,29,42,.12); }
+      .btn.primary:hover{ box-shadow: 0 22px 34px rgba(17,79,138,.24); }
+    }
 
-    /* Hero */
+    /* ======= HERO ======= */
     header.hero{
       margin-top:14px;
-      border-radius: 26px;
-      border:1px solid rgba(230,235,242,.9);
+      border-radius: var(--radius-lg);
+      border:1px solid rgba(230,235,242,.95);
       box-shadow: var(--shadow);
       background:
         linear-gradient(135deg, rgba(26,102,173,.18), rgba(217,58,74,.14)),
-        rgba(255,255,255,.80);
+        rgba(255,255,255,.82);
       position:relative;
       overflow:hidden;
       padding: 22px 20px;
-    }
-    .hero:before{
-      content:"";
-      position:absolute; right:-220px; top:-230px;
-      width:520px; height:520px; border-radius:50%;
-      background: radial-gradient(circle at 35% 35%, rgba(217,58,74,.40), transparent 62%);
-      opacity:.65;
-    }
-    .hero:after{
-      content:"";
-      position:absolute; left:-240px; bottom:-260px;
-      width:560px; height:560px; border-radius:50%;
-      background: radial-gradient(circle at 40% 40%, rgba(26,102,173,.42), transparent 62%);
-      opacity:.55;
     }
 
     .hero-inner{
       position:relative;
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.15fr .85fr;
       gap:16px;
-      align-items:start;
+      align-items:stretch;
     }
     @media (max-width: 980px){ .hero-inner{grid-template-columns:1fr} }
 
     .kicker{
       display:inline-flex; align-items:center; gap:10px;
       background: rgba(255,255,255,.78);
-      border:1px solid rgba(230,235,242,.9);
+      border:1px solid rgba(230,235,242,.95);
       padding:8px 12px;
       border-radius:999px;
       color: var(--muted);
-      font-weight:850;
+      font-weight:900;
       width: fit-content;
+      box-shadow: 0 10px 18px rgba(15,29,42,.06);
     }
     .kicker .dot{
-      width:10px;height:10px;border-radius:50%;
+      width:10px; height:10px; border-radius:50%;
       background: linear-gradient(135deg, var(--red-600), var(--blue-600));
     }
 
     h1{
       margin: 14px 0 10px;
-      font-size: clamp(2.0rem, 3vw, 2.9rem);
+      font-size: clamp(2.05rem, 3.1vw, 3.0rem);
       line-height:1.08;
-      letter-spacing:-.6px;
+      letter-spacing:-.7px;
     }
     .sub{
       margin:0 0 14px;
       color:var(--muted);
-      font-size:1.07rem;
-      max-width: 62ch;
+      font-size:1.06rem;
+      max-width: 68ch;
     }
+
     .mini-row{
       display:flex;
       flex-wrap:wrap;
@@ -231,8 +237,8 @@
       gap:10px;
       padding:10px 12px;
       border-radius: 14px;
-      background: rgba(255,255,255,.88);
-      border:1px solid rgba(230,235,242,.92);
+      background: rgba(255,255,255,.90);
+      border:1px solid rgba(230,235,242,.95);
       box-shadow: 0 10px 18px rgba(15,29,42,.06);
       font-weight:900;
       color:var(--blue-900);
@@ -243,129 +249,120 @@
       display:inline-block;
     }
 
-    /* RIGHT COLUMN STACK */
-    .right-stack{
+    .hero-side{
       display:flex;
       flex-direction:column;
       gap:14px;
+      height:100%;
     }
 
-    .hero-card{
-      background: rgba(255,255,255,.90);
-      border:1px solid rgba(230,235,242,.92);
+    .card{
+      background: rgba(255,255,255,.92);
+      border:1px solid rgba(230,235,242,.95);
       border-radius: 22px;
       padding:16px;
       box-shadow: var(--shadow2);
     }
-    .hero-card h3{
+    .card h3{
       margin:0 0 8px;
       font-size:1.05rem;
       color:var(--blue-900);
       letter-spacing:-.2px;
     }
-    .hero-card ul{margin:0; padding-left:18px; color:var(--muted)}
-    .hero-card li{margin:8px 0}
+    .card ul{margin:0; padding-left:18px; color:var(--muted)}
+    .card li{margin:8px 0}
 
-    /* Appointment CTA (no background behind doctor image) */
-    .appt{
-      background: rgba(255,255,255,.90);
-      border:1px solid rgba(230,235,242,.92);
-      border-radius: 22px;
-      box-shadow: var(--shadow2);
-      padding:16px;
+    /* Schedule card in bottom-right of hero */
+    .schedule{
       display:grid;
-      grid-template-columns: 150px 1fr;
+      grid-template-columns: 120px 1fr;
       gap:14px;
       align-items:center;
-    }
-    @media (max-width: 980px){
-      .appt{ grid-template-columns: 1fr; text-align:left; }
+      padding:16px;
+      border-radius:22px;
+      border:1px solid rgba(230,235,242,.95);
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--shadow2);
     }
 
-    .appt-img{
-      /* removed background box completely */
-      width:150px;
-      height:auto;
+    .docWrap{
+      width:120px;
+      height:120px;
+      border-radius:20px;
+      background: transparent; /* remove the “boxed” look */
       display:flex;
-      align-items:center;
+      align-items:flex-end;
       justify-content:center;
-      padding:0;
-      border:none;
-      box-shadow:none;
-      background:transparent;
-      overflow:visible;
-    }
-    .appt-img img{
-      width:150px;              /* BIGGER + consistent */
-      height:auto;
-      object-fit:contain;        /* prevents weird scaling */
-      display:block;
-      filter: drop-shadow(0 12px 18px rgba(15,29,42,.18));
-    }
-    @media (max-width: 980px){
-      .appt-img{ width:170px; }
-      .appt-img img{ width:170px; }
+      overflow:visible;         /* let it feel bigger */
     }
 
-    .appt h4{
+    .docWrap img{
+      width:138px;              /* bigger emphasis */
+      height:auto;
+      display:block;
+      transform: translateY(8px);
+      filter: drop-shadow(0 18px 18px rgba(15,29,42,.18));
+    }
+
+    .schedule h3{
       margin:0 0 6px;
       font-size:1.15rem;
       color:var(--blue-900);
       letter-spacing:-.2px;
     }
-    .appt p{
-      margin:0;
+    .schedule p{
+      margin:0 0 12px;
       color:var(--muted);
     }
-    .appt-actions{ margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; }
-    .btn.big{
-      padding:12px 18px;
-      font-size:1.02rem;
-      font-weight:950;
-      box-shadow: 0 18px 30px rgba(17,79,138,.18);
+    .schedule .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .schedule .btn.primary{
+      padding:12px 18px;  /* bigger button */
+      font-size:1rem;
     }
 
-    /* Section blocks */
+    /* ======= SECTIONS ======= */
     section.block{
       margin-top: 16px;
       background: rgba(255,255,255,.90);
       border: 1px solid rgba(230,235,242,.95);
-      border-radius: 22px;
+      border-radius: var(--radius-lg);
       box-shadow: var(--shadow2);
       padding: 18px;
-      animation: fadeUp .5s ease both;
     }
-
     .block h2{
-      margin: 4px 0 10px;
-      font-size: 1.4rem;
+      margin: 2px 0 10px;
+      font-size: 1.45rem;
       color: var(--blue-900);
       letter-spacing:-.3px;
     }
     .lead{
       color:var(--muted);
       margin-top:-4px;
-      max-width: 80ch;
+      max-width: 85ch;
     }
 
-    .grid-3{
+    .grid-2{
       display:grid;
-      grid-template-columns: repeat(12,1fr);
+      grid-template-columns: 1fr 1fr;
       gap:14px;
       margin-top:12px;
     }
-    .g3{grid-column: span 4}
-    @media (max-width: 980px){ .g3{grid-column: span 12} }
+    @media (max-width: 980px){ .grid-2{grid-template-columns:1fr} }
 
     .tile{
       border-radius: 18px;
       border:1px solid rgba(230,235,242,.95);
       background:#fff;
-      padding: 14px;
-      box-shadow: 0 10px 18px rgba(15,29,42,.06);
-      animation: fadeUp .5s ease both;
+      padding: 16px;
+      box-shadow: 0 12px 20px rgba(15,29,42,.06);
     }
-    .tile .label{
+
+    .label{
       display:inline-flex;
       align-items:center;
       gap:8px;
@@ -377,216 +374,197 @@
       padding: 6px 10px;
       border-radius:999px;
     }
-    .tile .label .dot{
+    .label .dot{
       width:9px; height:9px; border-radius:50%;
       background: var(--blue-600);
     }
-    .tile .label.red{
+    .label.red{
       background: #fff2f4;
       border:1px solid rgba(217,58,74,.14);
     }
-    .tile .label.red .dot{background: var(--red-600)}
-    .tile h3{
-      margin:10px 0 6px;
-      letter-spacing:-.2px;
-      color:var(--ink);
-    }
-    .tile p{margin:0; color:var(--muted); max-width:70ch}
+    .label.red .dot{background: var(--red-600)}
 
-    .grid-2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-      margin-top:12px;
-    }
-    @media (max-width: 980px){ .grid-2{grid-template-columns:1fr} }
+    .tile h3{margin:10px 0 8px; letter-spacing:-.2px; color:var(--ink)}
+    .tile p{margin:0; color:var(--muted); max-width:80ch}
 
-    .callout{
-      border-radius: 18px;
-      border: 1px solid rgba(230,235,242,.95);
-      background: linear-gradient(135deg, rgba(255,236,239,.75), rgba(233,242,255,.80));
-      padding: 14px;
-      animation: fadeUp .5s ease both;
-    }
-    .callout strong{color: var(--blue-900)}
-    ul{margin: 10px 0 0 18px; color: var(--muted)}
-    li{margin: 6px 0}
-    .small{font-size:.95rem; color:var(--muted); max-width: 80ch}
+    .bullets{margin:10px 0 0 18px; color:var(--muted)}
+    .bullets li{margin:7px 0}
 
-    /* Step card (How to get tested) */
-    .test-card h3{ margin-bottom:14px; }
-    .step{ display:flex; gap:14px; align-items:flex-start; margin-bottom:16px; }
-    .step:last-child{ margin-bottom:0; }
-    .step-icon{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, var(--blue-700), var(--red-600));
-      color:#fff; font-weight:900;
-      display:flex; align-items:center; justify-content:center;
-      flex-shrink:0;
-      box-shadow: 0 8px 16px rgba(15,29,42,.15);
+    /* ======= SURVEY SAYS (your exact numbers + style) ======= */
+    .surveyWrap{
+      background:
+        radial-gradient(900px 500px at 10% 10%, rgba(217,58,74,.10), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(26,102,173,.10), transparent 60%),
+        rgba(255,255,255,.92);
     }
-    .step p{ margin:6px 0 0; color:var(--muted); }
 
-    /* Survey Says section */
-    .survey{
-      margin-top:16px;
-      padding:18px;
-      border-radius:22px;
-      border:1px solid rgba(230,235,242,.95);
-      background: rgba(255,255,255,.92);
-      box-shadow: var(--shadow2);
-      animation: fadeUp .5s ease both;
-    }
-    .survey h2{
-      margin:0;
+    .surveyHeader{
       text-align:center;
-      font-size:2rem;
-      color:var(--blue-900);
+      padding: 6px 0 10px;
+    }
+    .surveyHeader h2{
+      margin: 4px 0 6px;
+      font-size: clamp(1.8rem, 2.2vw, 2.2rem);
       letter-spacing:-.4px;
     }
-    .survey .subline{
-      margin:8px auto 0;
-      text-align:center;
+    .surveyHeader p{
+      margin:0;
       color:var(--muted);
-      max-width:80ch;
+      max-width: 92ch;
+      margin-inline:auto;
     }
 
-    .survey-grid{
-      margin-top:16px;
+    .surveyGrid{
       display:grid;
-      grid-template-columns: 1fr 1fr 1.6fr;
-      gap:16px;
+      grid-template-columns: 1fr 1fr 2.2fr;
+      gap:14px;
       align-items:stretch;
+      margin-top:14px;
     }
     @media (max-width: 980px){
-      .survey-grid{ grid-template-columns:1fr; }
+      .surveyGrid{ grid-template-columns: 1fr; }
     }
 
-    .survey-card{
+    .circleCard{
       background:#fff;
       border:1px solid rgba(230,235,242,.95);
-      border-radius:18px;
-      box-shadow: 0 10px 18px rgba(15,29,42,.06);
-      padding:16px;
+      border-radius: 20px;
+      box-shadow: 0 12px 20px rgba(15,29,42,.06);
+      padding: 18px;
       display:flex;
       flex-direction:column;
       align-items:center;
       justify-content:center;
-      text-align:center;
-      min-height: 220px;
+      gap:12px;
+      min-height: 280px;
     }
 
     .circle{
-      width:150px;
-      height:150px;
-      border-radius:50%;
-      margin:4px auto 12px;
+      width:160px;
+      height:160px;
+      border-radius:999px;
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:4px;
-      color:#ffffff !important;
-      font-weight:1000;
-      letter-spacing:-1px;
-      box-shadow: 0 18px 30px rgba(15,29,42,.12);
-      text-shadow: 0 2px 8px rgba(0,0,0,.15);
+      box-shadow: inset 0 18px 28px rgba(255,255,255,.16), 0 18px 26px rgba(15,29,42,.10);
+      position:relative;
     }
-    .circle .num{ font-size:3rem; line-height:1; color:#fff !important; }
-    .circle .pct{ font-size:1.8rem; line-height:1; color:#fff !important; transform: translateY(2px); }
-
     .circle.red{
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 40%),
-                  linear-gradient(135deg, #ff2f45, #b0192a);
+      background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.25), transparent 55%),
+                  linear-gradient(135deg, #ff3044, var(--red-700));
     }
     .circle.navy{
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.16), transparent 40%),
-                  linear-gradient(135deg, #0f1f38, #1e2f55);
+      background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.20), transparent 55%),
+                  linear-gradient(135deg, #0f2442, #08162c);
     }
 
-    .survey-card .caption{
-      margin:0;
-      font-weight:850;
+    /* Make the % readable (your issue) */
+    .circle .value{
+      display:flex;
+      align-items:baseline;
+      gap:2px;
+      color:#fff;
+      font-weight:1000;
+      letter-spacing:-.8px;
+      text-shadow: 0 6px 18px rgba(0,0,0,.35);
+    }
+    .circle .value .num{ font-size: 3.2rem; line-height:1; }
+    .circle .value .pct{ font-size: 1.6rem; line-height:1; opacity:.98; }
+
+    .circleCard .caption{
+      text-align:center;
       color:var(--muted);
+      font-weight:700;
       max-width: 26ch;
     }
 
-    .survey-list{
+    .bars{
       display:flex;
       flex-direction:column;
       gap:14px;
     }
 
-    .stat-row{
+    .barCard{
       background:#fff;
       border:1px solid rgba(230,235,242,.95);
-      border-radius:18px;
-      box-shadow: 0 10px 18px rgba(15,29,42,.06);
-      padding:16px;
-      display:grid;
-      grid-template-columns: 64px 1fr 26px;
+      border-radius: 20px;
+      box-shadow: 0 12px 20px rgba(15,29,42,.06);
+      padding: 16px;
+      display:flex;
       align-items:center;
+      justify-content:space-between;
       gap:14px;
       position:relative;
       overflow:hidden;
     }
-    .stat-row:before{
+
+    .barCard::before{
       content:"";
       position:absolute;
       left:0; top:0; bottom:0;
-      width:5px;
+      width:6px;
       background: linear-gradient(180deg, var(--red-600), var(--blue-600));
       opacity:.9;
     }
+
+    .barLeft{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 0;
+    }
+
     .badge{
-      width:46px; height:46px;
-      border-radius:12px;
+      width:44px; height:44px;
+      border-radius: 12px;
       display:flex;
       align-items:center;
       justify-content:center;
       color:#fff;
-      font-weight:950;
-      box-shadow: 0 10px 18px rgba(15,29,42,.10);
+      font-weight:1000;
+      box-shadow: 0 14px 22px rgba(15,29,42,.16);
+      flex: 0 0 auto;
     }
-    .badge.red{ background: linear-gradient(135deg, var(--red-600), #ff5261); }
-    .badge.blue{ background: linear-gradient(135deg, var(--blue-700), #2a86d8); }
+    .badge.red{ background: linear-gradient(135deg, var(--red-600), var(--red-700)); }
+    .badge.blue{ background: linear-gradient(135deg, var(--blue-700), var(--blue-900)); }
 
-    .stat-main{
+    .barText{
       display:flex;
       flex-direction:column;
-      gap:4px;
       min-width:0;
     }
-    .stat-main .pctbig{
+    .barText .pct{
       font-size:2rem;
       font-weight:1000;
-      letter-spacing:-.5px;
-      color:var(--blue-900);
+      letter-spacing:-.6px;
       line-height:1.05;
+      color: var(--red-600);
     }
-    .stat-main .text{
+    .barText .pct.blue{ color: var(--blue-800); }
+    .barText .desc{
       color:var(--muted);
       font-weight:700;
+      margin-top:2px;
     }
-    .arrow{
-      width:0; height:0;
-      border-left:9px solid transparent;
-      border-right:9px solid transparent;
-      border-bottom:14px solid var(--red-600);
-      justify-self:end;
-      opacity:.9;
-    }
-    .arrow.blue{ border-bottom-color: var(--blue-700); }
-    .arrow.up{ transform: rotate(0deg); }
-    .arrow.down{ transform: rotate(180deg); }
 
-    /* FAQs */
+    .tri{
+      width:0; height:0;
+      border-left:10px solid transparent;
+      border-right:10px solid transparent;
+      border-bottom:16px solid var(--red-600);
+      opacity:.9;
+      margin-right:4px;
+      flex: 0 0 auto;
+    }
+    .tri.blue{ border-bottom-color: var(--blue-900); }
+
+    /* ======= FAQ ======= */
     details{
       border: 1px solid rgba(230,235,242,.95);
       border-radius: 18px;
       background: #fff;
       padding: 12px 14px;
       box-shadow: 0 10px 18px rgba(15,29,42,.05);
-      animation: fadeUp .5s ease both;
     }
     details + details{margin-top:10px}
     summary{
@@ -605,30 +583,31 @@
     details[open] summary:after{content:"–"}
     .answer{margin-top:10px; color:var(--muted)}
 
-    /* Footer at true bottom */
-    .site-footer{
-      margin-top:40px;
-      padding:30px 20px;
-      background: linear-gradient(135deg, rgba(233,242,255,.70), rgba(255,236,239,.60));
-      border-top:1px solid var(--line);
+    /* ======= FOOTER (true bottom) ======= */
+    footer{
+      margin: 16px 0 0;
+      padding: 16px 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(230,235,242,.95);
+      background: rgba(255,255,255,.92);
+      color: var(--muted);
+      box-shadow: 0 10px 18px rgba(15,29,42,.05);
     }
-    .footer-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      text-align:center;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-    .footer-inner strong{ color:var(--blue-900); }
-    .footer-divider{
-      height:1px;
-      background:var(--line);
-      margin:18px auto;
-      width:60%;
-    }
-    .copyright{ font-size:.85rem; opacity:.8; margin:0; }
+    .divider{height:1px; background:var(--line); margin: 12px 0}
+    .small{font-size:.95rem; color:var(--muted)}
 
-    /* Back-to-top button */
+    /* ======= MOTION ======= */
+    @keyframes fadeUp{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+    header.hero, section.block, footer{ animation: fadeUp .5s ease both; }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+    }
+
+    /* Back-to-top */
     #backToTop{
       position: fixed;
       bottom: 18px;
@@ -639,14 +618,14 @@
       border: none;
       cursor: pointer;
       font-size: 18px;
-      font-weight: 900;
+      font-weight: 1000;
       color: white;
       background: linear-gradient(135deg, var(--blue-700), var(--red-600));
-      box-shadow: 0 10px 20px rgba(15,29,42,.15);
+      box-shadow: 0 12px 22px rgba(15,29,42,.18);
       opacity: 0;
       pointer-events: none;
       transform: translateY(6px);
-      transition: opacity .25s ease, transform .25s ease;
+      transition: opacity .22s ease, transform .22s ease;
       z-index: 999;
     }
     #backToTop.show{
@@ -654,42 +633,24 @@
       pointer-events: auto;
       transform: translateY(0);
     }
-    @media (hover:hover){
-      #backToTop:hover{ transform: translateY(-2px); }
-    }
 
-    /* Smooth entrance animation */
-    @keyframes fadeUp{
-      from{ opacity:0; transform: translateY(8px); }
-      to{ opacity:1; transform: translateY(0); }
-    }
-
-    /* Mobile polish */
+    /* Mobile: fewer top items, better spacing */
     @media (max-width:768px){
-      .wrap{ padding:12px 14px 26px; }
-      .nav{ display:none; }              /* hide chips on mobile */
-      .brand-text span{ display:none; }  /* hide subtitle line */
-      .topbar{ border-radius: 16px; padding: 10px 12px; }
-      .brand img{ height: 42px; padding: 8px; }
-
-      header.hero{ padding: 18px 16px; border-radius: 18px; }
-      h1{ font-size: 1.85rem; }
-
-      .hero:before, .hero:after{ display:none; }
-      .btn{ width:100%; justify-content:center; } /* stack hero buttons */
-      .appt-actions .btn{ width:100%; }           /* stack CTA button */
-    }
-
-    /* Respect reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+      .topbar{ padding:10px 10px; }
+      .brand img{ width:56px; height:40px; padding:8px 9px; }
+      .brand-text span{ display:none; }     /* reduce crowding */
+      .nav .chip{ display:none; }           /* hide chips on mobile */
+      .nav .btn{ padding:9px 12px; }
+      .schedule{ grid-template-columns: 1fr; text-align:left; }
+      .docWrap{ width:auto; height:auto; justify-content:flex-start; }
+      .docWrap img{ width:160px; transform: translateY(4px); }
     }
 
     /* Print */
     @media print{
-      .sticky, .btn, .nav, #backToTop{display:none !important}
+      .sticky, #backToTop{display:none !important}
       body{background:#fff}
-      header.hero, section.block, .survey{box-shadow:none}
+      header.hero, section.block, footer{box-shadow:none}
     }
   </style>
 </head>
@@ -697,11 +658,10 @@
 <body>
   <div class="wrap">
 
-    <!-- Sticky top header -->
+    <!-- Top header (reduced items) -->
     <div class="sticky">
       <div class="topbar">
         <div class="brand">
-          <!-- Use your padded logo file for best fit -->
           <img src="logo.png" alt="Central Florida Heart Care logo" />
           <div class="brand-text">
             <strong>Central Florida Heart Care</strong>
@@ -710,13 +670,12 @@
         </div>
 
         <div class="nav">
+          <!-- fewer items -->
           <a class="chip" href="#overview"><span class="dot" aria-hidden="true"></span> Overview</a>
           <a class="chip" href="#survey"><span class="dot" aria-hidden="true"></span> Survey</a>
-          <a class="chip" href="#test"><span class="dot" aria-hidden="true"></span> Testing</a>
-          <a class="chip" href="#results"><span class="dot" aria-hidden="true"></span> Results</a>
-          <a class="chip" href="#next"><span class="dot" aria-hidden="true"></span> Next steps</a>
+          <a class="chip" href="#testing"><span class="dot" aria-hidden="true"></span> Testing</a>
           <a class="chip" href="#faq"><span class="dot" aria-hidden="true"></span> FAQs</a>
-          <button class="btn ghost" onclick="window.print()" title="Print this page">Print</button>
+          <button class="btn" onclick="window.print()" title="Print this page">Print</button>
         </div>
       </div>
     </div>
@@ -726,23 +685,18 @@
       <div class="hero-inner">
         <div>
           <div class="kicker"><span class="dot" aria-hidden="true"></span> Lipoprotein(a) / Lp(a)</div>
+
           <h1>Lipoprotein(a) [Lp(a)] — Patient Information</h1>
+
           <p class="sub">
-            Lp(a) is a cholesterol-carrying particle that is mostly determined by genetics.
-            It is not always included in routine cholesterol testing, so many people don’t know their level.
+            Lp(a) is a “sticky” cholesterol particle that is mostly inherited (genetic).
+            It’s not always checked on routine cholesterol labs — so many people don’t know their level.
           </p>
 
           <div class="mini-row">
-            <span class="mini-pill"><i aria-hidden="true"></i> Often genetic</span>
-            <span class="mini-pill"><i aria-hidden="true" style="background:var(--blue-600)"></i> Not always on a lipid panel</span>
-            <span class="mini-pill"><i aria-hidden="true" style="background:var(--red-500)"></i> Helpful for risk planning</span>
-          </div>
-
-          <div class="mini-row" style="margin-top:14px;">
-            <a class="btn" href="#survey">Survey says</a>
-            <a class="btn" href="#test">When to get tested</a>
-            <a class="btn" href="#results">What results mean</a>
-            <a class="btn" href="#faq">FAQs</a>
+            <span class="mini-pill"><i aria-hidden="true"></i> Mostly genetic</span>
+            <span class="mini-pill"><i aria-hidden="true" style="background:var(--blue-600)"></i> Not on many routine tests</span>
+            <span class="mini-pill"><i aria-hidden="true" style="background:var(--red-500)"></i> Helps plan prevention</span>
           </div>
 
           <p class="small" style="margin-top:12px;">
@@ -750,35 +704,29 @@
           </p>
         </div>
 
-        <div class="right-stack">
-          <div class="hero-card">
+        <div class="hero-side">
+          <div class="card">
             <h3>Key takeaways</h3>
             <ul>
-              <li>Some people can have a normal LDL and still have high Lp(a).</li>
-              <li>High Lp(a) is associated with higher cardiovascular risk and aortic valve disease risk.</li>
-              <li>Because it can run in families, relatives may benefit from testing.</li>
+              <li>You can have “normal” LDL and still have high Lp(a).</li>
+              <li>High Lp(a) can raise risk for heart disease and aortic valve disease.</li>
+              <li>Because it runs in families, relatives may benefit from testing.</li>
             </ul>
           </div>
 
-          <!-- Appointment CTA (separate from key takeaways) -->
-          <div class="appt" aria-label="Schedule appointment">
-            <div class="appt-img">
-              <!-- Your doctor image file name here -->
-              <img src="doctor.png" alt="Doctor illustration" />
+          <!-- Bottom-right fill-in (separate from key takeaways) -->
+          <div class="schedule" aria-label="Schedule appointment">
+            <div class="docWrap">
+              <img src="doctor.png" alt="Clinician illustration" />
             </div>
-
             <div>
-              <h4>Ready to schedule?</h4>
+              <h3>Ready to schedule?</h3>
               <p>If you have questions about Lp(a) or your heart risk, we’re here to help.</p>
-
-              <div class="appt-actions">
-                <a class="btn primary big" href="https://centralfloridaheartcare.com/lipoproteina/#appointments" target="_blank" rel="noopener">
+              <div class="cta">
+                <a class="btn primary" href="https://centralfloridaheartcare.com/lipoproteina/" target="_blank" rel="noopener">
                   Schedule Appointment
                 </a>
               </div>
-
-              <p class="small" style="margin-top:10px;">
-              </p>
             </div>
           </div>
         </div>
@@ -786,102 +734,105 @@
       </div>
     </header>
 
-    <!-- At a glance -->
-    <section class="block">
-      <h2>At a glance</h2>
-      <p class="lead">A quick overview before you dive into the details.</p>
+    <!-- Survey Says (exact info + graph style) -->
+    <section class="block surveyWrap" id="survey">
+      <div class="surveyHeader">
+        <h2>Survey Says…</h2>
+        <p>According to a previous survey conducted by multiple physicians attending the ASPC 2025 Congress on Cardiovascular Disease Prevention</p>
+      </div>
 
-      <div class="grid-3">
-        <div class="tile g3">
-          <div class="label"><span class="dot" aria-hidden="true"></span> What it is</div>
-          <h3>Lipoprotein(a) [Lp(a)]</h3>
-          <p>
-            Lp(a) is a type of lipoprotein (a “carrier” in the blood). Like LDL, it contains ApoB, but Lp(a) also includes an additional protein called Apo(a).
-            Higher levels can contribute to plaque buildup in arteries.
-          </p>
+      <div class="surveyGrid">
+        <div class="circleCard">
+          <div class="circle red">
+            <div class="value" aria-label="74 percent">
+              <span class="num">74</span><span class="pct">%</span>
+            </div>
+          </div>
+          <div class="caption">Do not know their personal Lp(a) level</div>
         </div>
 
-        <div class="tile g3">
-          <div class="label red"><span class="dot" aria-hidden="true"></span> Why it matters</div>
-          <h3>Risk can be “silent”</h3>
-          <p>
-            People with high Lp(a) can have increased risk for heart attack, stroke, peripheral artery disease (PAD), and aortic stenosis.
-            Many people feel well until a serious event occurs.
-          </p>
+        <div class="circleCard">
+          <div class="circle navy">
+            <div class="value" aria-label="54 percent">
+              <span class="num">54</span><span class="pct">%</span>
+            </div>
+          </div>
+          <div class="caption">Do not know if their personal LDL-C is &lt; 100 mg/dL</div>
         </div>
 
-        <div class="tile g3">
-          <div class="label"><span class="dot" aria-hidden="true"></span> What you can do</div>
-          <h3>Use it for a plan</h3>
-          <p>
-            Lp(a) is often genetic and may not change much. The goal is to reduce overall cardiovascular risk with the right targets and treatments for you.
-          </p>
+        <div class="bars">
+          <div class="barCard">
+            <div class="barLeft">
+              <div class="badge red">16</div>
+              <div class="barText">
+                <div class="pct">16%</div>
+                <div class="desc">Have Lp(a) levels above 125 nmol/L</div>
+              </div>
+            </div>
+            <div class="tri" aria-hidden="true"></div>
+          </div>
+
+          <div class="barCard">
+            <div class="barLeft">
+              <div class="badge blue">11</div>
+              <div class="barText">
+                <div class="pct blue">11%</div>
+                <div class="desc">Have hs-CRP levels above 3.0 mg/L</div>
+              </div>
+            </div>
+            <div class="tri blue" aria-hidden="true"></div>
+          </div>
+
+          <div class="barCard">
+            <div class="barLeft">
+              <div class="badge red">46</div>
+              <div class="barText">
+                <div class="pct">46%</div>
+                <div class="desc">Have LDL-C levels above 100 mg/dL</div>
+              </div>
+            </div>
+            <div class="tri" aria-hidden="true"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Survey Says -->
-    <section class="survey" id="survey">
-      <h2>Survey Says…</h2>
-      <p class="subline">
-        According to a previous survey conducted by multiple physicians attending the ASPC 2025 Congress on Cardiovascular Disease Prevention
+    <!-- Patient-friendly “what it is / why it matters” -->
+    <section class="block" id="what">
+      <h2>What is Lp(a), in plain language?</h2>
+      <p class="lead">
+        Lp(a) is a cholesterol particle that can stick to artery walls. Most of the time, it’s inherited — meaning you can have a healthy lifestyle and still have a higher level.
       </p>
 
-      <div class="survey-grid">
-        <div class="survey-card">
-          <div class="circle red" aria-label="74 percent">
-            <span class="num">74</span><span class="pct">%</span>
-          </div>
-          <p class="caption">Do not know their personal Lp(a) level</p>
+      <div class="grid-2">
+        <div class="tile">
+          <div class="label"><span class="dot" aria-hidden="true"></span> What it is</div>
+          <h3>A genetic cholesterol particle</h3>
+          <p>
+            Think of Lp(a) as a “type of LDL” with an extra protein attached. That extra piece can make it more likely to contribute to plaque buildup.
+          </p>
         </div>
 
-        <div class="survey-card">
-          <div class="circle navy" aria-label="54 percent">
-            <span class="num">54</span><span class="pct">%</span>
-          </div>
-          <p class="caption">Do not know if their personal LDL-C is &lt; 100 mg/dL</p>
-        </div>
-
-        <div class="survey-list">
-          <div class="stat-row">
-            <div class="badge red">16</div>
-            <div class="stat-main">
-              <div class="pctbig" style="color:var(--red-600);">16%</div>
-              <div class="text">Have Lp(a) levels above 125 nmol/L</div>
-            </div>
-            <div class="arrow up"></div>
-          </div>
-
-          <div class="stat-row">
-            <div class="badge blue">11</div>
-            <div class="stat-main">
-              <div class="pctbig" style="color:var(--blue-700);">11%</div>
-              <div class="text">Have hs-CRP levels above 3.0 mg/L</div>
-            </div>
-            <div class="arrow blue up"></div>
-          </div>
-
-          <div class="stat-row">
-            <div class="badge red">46</div>
-            <div class="stat-main">
-              <div class="pctbig" style="color:var(--red-600);">46%</div>
-              <div class="text">Have LDL-C levels above 100 mg/dL</div>
-            </div>
-            <div class="arrow up"></div>
-          </div>
+        <div class="tile">
+          <div class="label red"><span class="dot" aria-hidden="true"></span> Why it matters</div>
+          <h3>Risk can be silent</h3>
+          <p>
+            High Lp(a) can increase risk for heart attack and stroke over time — even if you feel fine today. Knowing your level helps you and your clinician plan prevention.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- Testing -->
-    <section class="block" id="test">
+    <section class="block" id="testing">
       <h2>Should I ask for an Lp(a) test?</h2>
-      <p class="lead">Many people only need Lp(a) checked once. It can be especially helpful if heart disease runs in your family.</p>
+      <p class="lead">Many people only need Lp(a) checked once. It’s especially helpful if heart disease runs in your family.</p>
 
       <div class="grid-2">
         <div class="tile">
-          <h3 style="margin:0 0 10px;">Good reasons to ask</h3>
-          <ul>
+          <div class="label red"><span class="dot" aria-hidden="true"></span> Good reasons to ask</div>
+          <h3>It may be worth testing if…</h3>
+          <ul class="bullets">
             <li>Early heart disease in the family (heart attack or stroke at a younger age)</li>
             <li>A parent, sibling, or child has high Lp(a)</li>
             <li>Familial hypercholesterolemia (FH)</li>
@@ -889,53 +840,58 @@
           </ul>
         </div>
 
-        <div class="tile test-card">
-          <h3>How to get tested</h3>
+        <div class="tile">
+          <div class="label"><span class="dot" aria-hidden="true"></span> How to get tested</div>
+          <h3>Two simple steps</h3>
 
-          <div class="step">
-            <div class="step-icon">1</div>
-            <div>
-              <strong>Ask for Lp(a)</strong>
-              <p>It’s a simple blood test. Ask your clinician to add “Lp(a)” to your labs — it’s not always included in routine cholesterol testing.</p>
+          <div style="display:grid; gap:12px; margin-top:10px;">
+            <div style="display:flex; gap:12px; align-items:flex-start;">
+              <div class="badge blue" style="width:40px;height:40px;border-radius:14px;">1</div>
+              <div>
+                <div style="font-weight:1000; color:var(--blue-900); margin-bottom:2px;">Ask for Lp(a)</div>
+                <div class="small">
+                  It’s a simple blood test. Ask your clinician to add “Lp(a)” — it’s not always included in routine cholesterol testing.
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:12px; align-items:flex-start;">
+              <div class="badge red" style="width:40px;height:40px;border-radius:14px;">2</div>
+              <div>
+                <div style="font-weight:1000; color:var(--blue-900); margin-bottom:2px;">If elevated</div>
+                <div class="small">
+                  If your level is high, your clinician may recommend testing close family members as well.
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="step">
-            <div class="step-icon">2</div>
-            <div>
-              <strong>If elevated</strong>
-              <p>If your level is high, your clinician may recommend testing close family members as well.</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
     <!-- Results -->
     <section class="block" id="results">
-      <h2>What do Lp(a) results mean?</h2>
-      <p class="lead">Lp(a) can be reported in mg/dL or nmol/L. Your clinician interprets it in context with your overall risk.</p>
+      <h2>What do results mean?</h2>
+      <p class="lead">
+        Lp(a) may be reported in <strong>mg/dL</strong> or <strong>nmol/L</strong>. Your clinician interprets it based on your overall risk and your lab’s reference range.
+      </p>
 
       <div class="grid-2">
         <div class="tile">
-          <div class="label red"><span class="dot" aria-hidden="true"></span> Interpreting results</div>
-          <h3>Units and thresholds</h3>
+          <div class="label red"><span class="dot" aria-hidden="true"></span> Common thresholds</div>
+          <h3>Often considered “elevated”</h3>
           <p>
-            A commonly used “elevated” threshold in many patient resources is <strong>&gt; 50 mg/dL</strong> (or <strong>&gt; 125 nmol/L</strong>).
-            Your clinician may use a different threshold depending on your lab and clinical situation.
-          </p>
-          <p class="small" style="margin-top:10px;">
-            If you have questions, ask your care team what your specific number means for you.
+            Many patient resources use <strong>&gt; 50 mg/dL</strong> or <strong>&gt; 125 nmol/L</strong> as a cutoff.
+            Your clinician may use a different threshold depending on your situation.
           </p>
         </div>
 
-        <div class="callout">
-          <strong>Is Lp(a) genetic?</strong>
-          <p class="small" style="margin:10px 0 0;">
-            Yes. Lp(a) is largely inherited and often stays relatively stable over a person’s lifetime.
-          </p>
-          <p class="small" style="margin:10px 0 0;">
-            Having high Lp(a) does not mean a heart problem is inevitable — it means your care team may recommend a more personalized prevention plan.
+        <div class="tile">
+          <div class="label"><span class="dot" aria-hidden="true"></span> The big picture</div>
+          <h3>High Lp(a) is a risk marker</h3>
+          <p>
+            It doesn’t mean a heart problem is guaranteed. It means you may benefit from a more personalized prevention plan (often focused on LDL control, blood pressure, and lifestyle).
           </p>
         </div>
       </div>
@@ -943,39 +899,31 @@
 
     <!-- Next steps -->
     <section class="block" id="next">
-      <h2>Next steps if your Lp(a) is high</h2>
-      <p class="lead">Even if Lp(a) itself doesn’t change much, your overall risk can change a lot with the right plan.</p>
+      <h2>Next steps if Lp(a) is high</h2>
+      <p class="lead">Even if Lp(a) itself doesn’t change much, your overall risk can improve a lot with the right plan.</p>
 
       <div class="grid-2">
-        <div class="callout">
-          <strong>Focus on overall risk reduction</strong>
-          <ul>
+        <div class="tile">
+          <div class="label"><span class="dot" aria-hidden="true"></span> Focus on overall risk</div>
+          <h3>High-impact basics</h3>
+          <ul class="bullets">
             <li>Heart-healthy eating pattern</li>
             <li>Regular physical activity</li>
             <li>Healthy weight maintenance</li>
             <li>Avoid tobacco</li>
-            <li>Sleep, stress management, and blood pressure control</li>
+            <li>Sleep, stress, and blood pressure control</li>
           </ul>
-          <p class="small" style="margin-top:10px;">
-            These habits support overall cardiovascular health even if they don’t directly lower Lp(a).
-          </p>
         </div>
 
         <div class="tile">
-          <div class="label"><span class="dot" aria-hidden="true"></span> Medications & therapies</div>
-          <h3>What your clinician may discuss</h3>
+          <div class="label red"><span class="dot" aria-hidden="true"></span> What your clinician may discuss</div>
+          <h3>Targets & treatments</h3>
           <p>
-            Your clinician may recommend intensive management of other risk factors (especially LDL cholesterol).
-            New therapies specifically targeting Lp(a) are under investigation.
+            Your clinician may recommend more intensive management of other risk factors (especially LDL cholesterol).
+            Therapies that specifically target Lp(a) are being studied.
           </p>
-
-          <div style="height:12px"></div>
-
-          <div class="label red"><span class="dot" aria-hidden="true"></span> Cost & insurance</div>
-          <h3>Checking coverage</h3>
-          <p class="small" style="margin:0;">
-            Coverage varies by plan. If you’re checking benefits, you can ask your insurer about Lp(a) testing using
-            <strong>CPT code 83695</strong>.
+          <p class="small" style="margin-top:10px;">
+            Coverage varies. If checking insurance benefits, Lp(a) testing is often referenced with <strong>CPT 83695</strong>.
           </p>
         </div>
       </div>
@@ -989,61 +937,57 @@
       <details>
         <summary>Can I have “normal cholesterol” but high Lp(a)?</summary>
         <div class="answer">
-          Yes. LDL (“bad cholesterol”) and Lp(a) are different. Some people have a normal LDL but still have high Lp(a). Lp(a) often requires a separate test.
+          Yes. Lp(a) is different from standard cholesterol numbers and often requires a separate test.
         </div>
       </details>
 
       <details>
         <summary>If Lp(a) is genetic, can lifestyle help?</summary>
         <div class="answer">
-          Healthy lifestyle habits are still very important. They may not directly lower Lp(a), but they can lower your overall heart risk (blood pressure, weight, blood sugar, and LDL).
+          Lifestyle may not lower Lp(a) much directly, but it can significantly improve overall heart risk (blood pressure, weight, inflammation, and other cholesterol values).
         </div>
       </details>
 
       <details>
         <summary>How often should I check Lp(a)?</summary>
         <div class="answer">
-          Because Lp(a) is usually stable over time, many people only need it checked once, unless your clinician recommends repeat testing for a specific reason.
+          Many people only need it checked once because it’s usually stable. Your clinician may recommend repeats in specific situations.
         </div>
       </details>
 
       <details>
         <summary>What should I ask my clinician?</summary>
         <div class="answer">
-          Ask whether Lp(a) testing is appropriate, how your result changes your risk assessment, whether relatives should consider testing, and what LDL and blood pressure targets are right for you.
+          Ask whether Lp(a) testing is appropriate, what your result means for your risk, what LDL targets fit you, and whether family members should be tested.
         </div>
       </details>
     </section>
 
+    <!-- True bottom footer -->
+    <footer>
+      <strong>Medical disclaimer:</strong> This page is for educational purposes only and is not medical advice.
+      It does not replace a conversation with a qualified clinician.
+      <div class="divider"></div>
+      <div class="small">
+        © <span id="year"></span> Central Florida Heart Care
+      </div>
+    </footer>
+
   </div>
 
-  <!-- Footer at true bottom -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <p>
-        <strong>Medical disclaimer:</strong>
-        This page is for educational purposes only and is not medical advice.
-        It does not replace a conversation with a qualified clinician.
-      </p>
-      <div class="footer-divider"></div>
-      <p class="copyright">© <span id="year"></span> Central Florida Heart Care</p>
-    </div>
-  </footer>
-
-  <!-- Back to top -->
   <button id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
 
   <script>
-    // Footer year
+    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Back to top show/hide
+    // Back to top visibility
     const btn = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 600) btn.classList.add("show");
+      if (window.scrollY > 700) btn.classList.add("show");
       else btn.classList.remove("show");
     });
-    btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    btn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
   </script>
 </body>
 </html>
