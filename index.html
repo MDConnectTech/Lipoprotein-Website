@@ -11,22 +11,13 @@
       --navy:#0d2d52;
       --navy-2:#153d67;
       --navy-3:#1f5a8c;
-      --sky:#eaf4fb;
-      --sky-2:#dbeefa;
       --teal:#2aa7a0;
-      --mint:#dff6f2;
       --orange:#f58b57;
-      --orange-2:#ffefe7;
       --ink:#18324a;
       --muted:#5a6f81;
-      --white:#ffffff;
-      --line:#d8e5ef;
       --bg:#f6fbff;
+      --line:#d8e5ef;
       --max:1180px;
-      --radius:26px;
-      --radius-sm:18px;
-      --shadow:0 22px 50px rgba(13,45,82,.10);
-      --shadow-soft:0 12px 28px rgba(13,45,82,.08);
     }
 
     *{box-sizing:border-box}
@@ -37,27 +28,20 @@
       color:var(--ink);
       background:
         radial-gradient(900px 500px at 0% 0%, rgba(42,167,160,.10), transparent 58%),
-        radial-gradient(1200px 700px at 100% 0%, rgba(245,139,87,.12), transparent 55%),
-        linear-gradient(180deg, #f9fdff 0%, #f4fbff 45%, #f8fbfd 100%);
-      line-height:1.6;
+        radial-gradient(1200px 700px at 100% 0%, rgba(245,139,87,.10), transparent 55%),
+        linear-gradient(180deg, #fbfeff 0%, #f3fbff 55%, #fbfdff 100%);
+      line-height:1.7;
     }
 
     img{max-width:100%; display:block}
-    a{text-decoration:none; color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:18px 18px 42px}
+    a{color:inherit; text-decoration:none}
 
-    .nav-shell{
-      position:sticky;
-      top:14px;
-      z-index:40;
-      margin-bottom:18px;
-    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:18px 18px 52px}
 
+    /* ===== Top nav (kept clean, but not “boxy” content below) ===== */
+    .nav-shell{position:sticky; top:14px; z-index:40; margin-bottom:18px}
     .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
       padding:14px 18px;
       border:1px solid rgba(255,255,255,.75);
       border-radius:999px;
@@ -65,13 +49,8 @@
       backdrop-filter:blur(14px);
       box-shadow:0 10px 25px rgba(13,45,82,.08);
     }
-
     .brand{display:flex; align-items:center; gap:14px; min-width:0}
-    .brand img{
-      width:58px; height:58px; object-fit:contain;
-      background:#fff; border-radius:16px; padding:8px;
-      border:1px solid var(--line);
-    }
+    .brand img{width:56px; height:56px; object-fit:contain; background:#fff; border-radius:16px; padding:8px; border:1px solid var(--line)}
     .brand-copy{min-width:0}
     .eyebrow{
       display:inline-flex; align-items:center; gap:8px;
@@ -79,280 +58,165 @@
       color:var(--teal);
       margin-bottom:4px;
     }
-    .eyebrow::before{
-      content:""; width:8px; height:8px; border-radius:50%; background:var(--teal);
-    }
+    .eyebrow::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--teal)}
     .brand-copy strong{display:block; font-size:1rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
     .brand-copy span{display:block; font-size:.9rem; color:var(--muted)}
 
     .nav-links{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    .nav-links a{
-      padding:10px 14px; border-radius:999px; color:var(--navy);
-      font-weight:700; font-size:.94rem; background:#f5fbff; border:1px solid #e0ecf5;
-    }
-    .nav-links .cta{
-      background:var(--navy); color:#fff; border-color:var(--navy);
-      box-shadow:0 12px 24px rgba(13,45,82,.18);
-    }
+    .nav-links a{padding:10px 14px; border-radius:999px; font-weight:700; font-size:.94rem; background:#f5fbff; border:1px solid #e0ecf5; color:var(--navy)}
+    .nav-links .cta{background:var(--navy); color:#fff; border-color:var(--navy); box-shadow:0 12px 24px rgba(13,45,82,.18)}
 
+    /* ===== Typography + flow layout ===== */
+    .content{max-width:72ch}
+    .section{margin-top:46px}
+    .section h2{margin:0 0 10px; font-size:clamp(1.9rem, 2.6vw, 2.6rem); line-height:1.12; color:var(--navy); letter-spacing:-.03em}
+    .section h3{margin:22px 0 8px; font-size:1.2rem; color:var(--navy)}
+    .lead{margin:0 0 18px; color:var(--muted); font-size:1.08rem}
+    .small{font-size:.98rem; color:var(--muted)}
+
+    .hr{height:1px; background:rgba(216,229,239,.9); margin:22px 0}
+
+    /* ===== Hero: still visual, but content is not boxed ===== */
     .hero{
-      position:relative;
-      overflow:hidden;
-      border-radius:36px;
-      background:linear-gradient(135deg, #eff9fd 0%, #ffffff 48%, #fff5ef 100%);
-      border:1px solid rgba(219,238,250,.9);
-      box-shadow:var(--shadow);
-      padding:34px;
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:auto -80px -110px auto;
-      width:340px; height:340px; border-radius:50%;
-      background:radial-gradient(circle, rgba(42,167,160,.14), transparent 64%);
-      pointer-events:none;
+      padding:18px 0 6px;
     }
     .hero-grid{
       display:grid;
-      grid-template-columns:minmax(0,1.12fr) minmax(360px,.88fr);
-      gap:26px;
-      align-items:stretch;
-      position:relative;
-      z-index:1;
+      grid-template-columns:minmax(0,1.1fr) minmax(260px,.9fr);
+      gap:34px;
+      align-items:center;
     }
-
     .pill{
       display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px; border-radius:999px; font-size:.84rem; font-weight:800;
-      letter-spacing:.08em; text-transform:uppercase; color:var(--navy);
-      background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-soft);
+      padding:10px 14px; border-radius:999px;
+      font-size:.84rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--navy);
+      background:rgba(255,255,255,.80);
+      border:1px solid rgba(216,229,239,.95);
     }
     .pill::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--orange)}
 
     h1{
-      margin:18px 0 14px;
-      font-size:clamp(2.4rem, 4vw, 4.4rem);
-      line-height:1.03;
-      letter-spacing:-.04em;
-      max-width:11ch;
+      margin:18px 0 12px;
+      font-size:clamp(2.5rem, 4.2vw, 4.6rem);
+      line-height:1.02;
+      letter-spacing:-.045em;
       color:var(--navy);
+      max-width:14ch;
     }
-    .sub{
-      margin:0 0 22px;
-      font-size:1.1rem;
-      color:var(--muted);
-      max-width:58ch;
-    }
+    .sub{margin:0 0 18px; font-size:1.12rem; color:var(--muted); max-width:60ch}
 
-    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:22px}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin:18px 0 18px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:14px 20px; border-radius:999px; font-weight:800; font-size:1rem;
-      border:1px solid transparent; transition:transform .18s ease, box-shadow .18s ease;
+      padding:14px 20px; border-radius:999px;
+      font-weight:850; font-size:1rem;
+      border:1px solid transparent;
+      transition:transform .18s ease, box-shadow .18s ease;
     }
-    .btn-primary{background:var(--navy); color:#fff; box-shadow:0 16px 28px rgba(13,45,82,.18)}
-    .btn-secondary{background:#fff; color:var(--navy); border-color:var(--line)}
     .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--navy); color:#fff; box-shadow:0 16px 28px rgba(13,45,82,.18)}
+    .btn-secondary{background:transparent; color:var(--navy); border-color:rgba(216,229,239,.95)}
 
-    .stat-row{
-      display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px;
-      margin-top:8px;
-    }
-    .stat{
-      background:rgba(255,255,255,.82);
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:16px;
-      box-shadow:var(--shadow-soft);
-    }
-    .stat strong{display:block; font-size:1.65rem; line-height:1; color:var(--navy); margin-bottom:6px}
-    .stat span{display:block; color:var(--muted); font-weight:600; font-size:.95rem}
-
-    .hero-card{
-      display:flex; flex-direction:column; justify-content:space-between; gap:18px;
-      background:var(--white); border:1px solid var(--line); border-radius:30px; padding:22px;
-      box-shadow:var(--shadow-soft);
-      min-height:100%;
+    .hero-aside{
+      justify-self:end;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:14px;
     }
     .hero-visual{
-      border-radius:24px;
-      overflow:hidden;
-      background:linear-gradient(135deg, var(--sky), #fff6f0);
-      border:1px solid #e3eef6;
-      min-height:290px;
-      display:flex; align-items:center; justify-content:center;
+      width:min(360px, 100%);
+      background:radial-gradient(circle at 30% 20%, rgba(42,167,160,.14), transparent 55%),
+                 radial-gradient(circle at 70% 80%, rgba(245,139,87,.14), transparent 55%);
+      border:1px solid rgba(216,229,239,.95);
+      border-radius:26px;
       padding:18px;
     }
-    .hero-visual img{
-      width:min(100%, 430px);
-      object-fit:contain;
-      filter:drop-shadow(0 18px 30px rgba(13,45,82,.10));
-    }
+    .hero-visual img{width:100%; object-fit:contain; filter:drop-shadow(0 18px 30px rgba(13,45,82,.10))}
 
-    .checklist{
-      display:grid; gap:12px; margin:0; padding:0; list-style:none;
-    }
-    .checklist li{
-      display:flex; gap:12px; align-items:flex-start; color:var(--ink); font-weight:650;
-      padding:12px 0; border-bottom:1px solid #edf4f8;
-    }
-    .checklist li:last-child{border-bottom:none}
+    .checklist{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+    .checklist li{display:flex; gap:12px; color:var(--ink); font-weight:650}
     .check{
-      width:28px; height:28px; border-radius:50%;
-      background:var(--mint); color:var(--teal); display:grid; place-items:center;
-      font-weight:900; flex:0 0 auto;
+      width:26px; height:26px; border-radius:50%;
+      background:rgba(42,167,160,.12);
+      color:var(--teal);
+      display:grid; place-items:center;
+      font-weight:950;
+      flex:0 0 auto;
     }
 
-    .section{
+    /* ===== Stats row (no cards) ===== */
+    .stats{
       margin-top:18px;
-      background:rgba(255,255,255,.88);
-      border:1px solid rgba(216,229,239,.95);
-      border-radius:32px;
-      box-shadow:var(--shadow-soft);
-      padding:28px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
     }
-    .section h2{
-      margin:0 0 8px; font-size:clamp(1.75rem,2.2vw,2.4rem); line-height:1.1; color:var(--navy); letter-spacing:-.03em;
-    }
-    .section .lead{margin:0 0 18px; color:var(--muted); max-width:72ch}
+    .stat strong{display:block; font-size:1.65rem; line-height:1; color:var(--navy); margin-bottom:6px}
+    .stat span{display:block; color:var(--muted); font-weight:650}
 
-    .steps-grid,
-    .info-grid,
-    .faq-grid{display:grid; gap:16px}
-    .steps-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    /* ===== Survey metrics (no boxes) ===== */
+    .metrics{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:18px;
+      margin-top:16px;
+    }
+    .metric{border-top:2px solid rgba(216,229,239,.95); padding-top:14px}
+    .metric .k{font-size:2rem; font-weight:950; color:var(--navy); line-height:1}
+    .metric .d{margin-top:6px; color:var(--muted); font-weight:650}
 
-    .step-card,
-    .info-card,
-    .cta-band,
-    details{
-      background:#fff; border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow-soft);
-    }
+    /* ===== Steps (no boxes) ===== */
+    .steps{margin:0; padding-left:18px; color:var(--muted)}
+    .steps li{margin:10px 0}
 
-    .step-card{padding:20px; position:relative; overflow:hidden}
-    .step-card::after{
-      content:""; position:absolute; inset:auto -35px -40px auto; width:120px; height:120px; border-radius:50%;
-      background:radial-gradient(circle, rgba(42,167,160,.12), transparent 66%);
-    }
-    .step-number{
-      width:52px; height:52px; border-radius:18px; display:grid; place-items:center;
-      font-size:1.2rem; font-weight:900; color:#fff; margin-bottom:14px;
-      background:linear-gradient(135deg, var(--teal), var(--navy-3));
-      box-shadow:0 14px 24px rgba(31,90,140,.18);
-    }
-    .step-card h3,.info-card h3{margin:0 0 8px; color:var(--navy); font-size:1.15rem}
-    .step-card p,.info-card p,.info-card li{color:var(--muted)}
-
-    .info-card{padding:22px}
-    .tag{
-      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
-      background:var(--sky); color:var(--navy); font-weight:800; font-size:.85rem; margin-bottom:12px;
-    }
-    .tag::before{content:""; width:9px; height:9px; border-radius:50%; background:var(--teal)}
-    .tag.warm{background:var(--orange-2)}
-    .tag.warm::before{background:var(--orange)}
-
-    .survey-shell{
-      background:linear-gradient(180deg, #f7fcfe 0%, #ffffff 100%);
-    }
-    .survey-grid{
-      display:grid; grid-template-columns:1.1fr .9fr; gap:18px; align-items:stretch;
-    }
-    .survey-feature{
-      background:linear-gradient(135deg, #0e365f, #1a547f 62%, #2aa7a0);
-      color:#fff; border-radius:28px; padding:24px; position:relative; overflow:hidden;
-      box-shadow:0 24px 44px rgba(13,45,82,.18);
-    }
-    .survey-feature::before{
-      content:""; position:absolute; inset:auto -40px -50px auto; width:180px; height:180px; border-radius:50%;
-      background:rgba(255,255,255,.08);
-    }
-    .survey-feature .small-label{font-size:.82rem; text-transform:uppercase; letter-spacing:.12em; font-weight:800; opacity:.82}
-    .survey-feature .big{font-size:4rem; line-height:1; font-weight:900; margin:10px 0 8px}
-    .survey-feature p{margin:0; max-width:30ch; color:rgba(255,255,255,.86)}
-
-    .metric-stack{display:grid; gap:14px}
-    .metric{
-      background:#fff; border:1px solid var(--line); border-radius:24px; padding:18px; box-shadow:var(--shadow-soft);
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
-    }
-    .metric strong{font-size:2rem; color:var(--navy); line-height:1}
-    .metric span{display:block; color:var(--muted); font-weight:650; margin-top:4px}
-    .metric-badge{
-      min-width:66px; height:66px; border-radius:20px; display:grid; place-items:center; font-weight:900; color:#fff;
-      background:linear-gradient(135deg, var(--orange), #f16d44);
-      box-shadow:0 14px 24px rgba(245,139,87,.24);
-    }
-    .metric:nth-child(2) .metric-badge,
-    .metric:nth-child(4) .metric-badge{background:linear-gradient(135deg, var(--teal), var(--navy-3)); box-shadow:0 14px 24px rgba(42,167,160,.22)}
-
-    .cta-band{
-      display:grid; grid-template-columns:1fr auto; gap:18px; align-items:center;
-      padding:22px 24px; margin-top:18px;
-      background:linear-gradient(135deg, rgba(42,167,160,.08), rgba(245,139,87,.08));
-    }
-    .cta-band h3{margin:0 0 6px; color:var(--navy); font-size:1.3rem}
-    .cta-band p{margin:0; color:var(--muted)}
-
-    details{padding:16px 18px}
-    summary{
-      cursor:pointer; list-style:none; font-weight:800; color:var(--navy); position:relative; padding-right:28px;
-    }
+    /* ===== FAQ: minimal, not boxed ===== */
+    details{border-top:1px solid rgba(216,229,239,.95); padding:14px 0}
+    details:last-of-type{border-bottom:1px solid rgba(216,229,239,.95)}
+    summary{cursor:pointer; list-style:none; font-weight:850; color:var(--navy); padding-right:28px; position:relative}
     summary::-webkit-details-marker{display:none}
-    summary::after{
-      content:"+"; position:absolute; right:0; top:0; color:var(--teal); font-size:1.3rem; font-weight:900;
-    }
+    summary::after{content:"+"; position:absolute; right:0; top:0; color:var(--teal); font-size:1.3rem; font-weight:950}
     details[open] summary::after{content:"–"}
     .answer{margin-top:10px; color:var(--muted)}
 
-    footer{
-      margin-top:18px; padding:24px 28px; border-radius:28px; color:var(--muted);
-      background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-soft);
-    }
+    footer{margin-top:54px; color:var(--muted); padding-top:18px; border-top:1px solid rgba(216,229,239,.95)}
     footer strong{color:var(--navy)}
-    .footer-line{height:1px; background:var(--line); margin:14px 0}
 
+    /* Back to top */
     #backToTop{
-      position:fixed; right:18px; bottom:18px; width:48px; height:48px; border:none; border-radius:50%;
-      background:var(--navy); color:#fff; font-size:18px; font-weight:900; cursor:pointer;
-      box-shadow:0 14px 28px rgba(13,45,82,.20); opacity:0; pointer-events:none; transform:translateY(10px);
-      transition:.2s ease; z-index:99;
+      position:fixed; right:18px; bottom:18px;
+      width:48px; height:48px;
+      border:none; border-radius:50%;
+      background:var(--navy);
+      color:#fff;
+      font-size:18px; font-weight:900;
+      cursor:pointer;
+      box-shadow:0 14px 28px rgba(13,45,82,.20);
+      opacity:0; pointer-events:none;
+      transform:translateY(10px);
+      transition:.2s ease;
+      z-index:99;
     }
     #backToTop.show{opacity:1; pointer-events:auto; transform:translateY(0)}
 
     @media (max-width: 980px){
-      .hero-grid,
-      .survey-grid,
-      .steps-grid,
-      .info-grid,
-      .cta-band{grid-template-columns:1fr}
-      h1{max-width:15ch}
-      .stat-row{grid-template-columns:1fr}
-      .hero{padding:24px}
-      .section{padding:22px}
-      .cta-band{padding:20px}
+      .hero-grid{grid-template-columns:1fr}
+      .hero-aside{justify-self:start}
+      .stats{grid-template-columns:1fr}
+      .metrics{grid-template-columns:1fr 1fr}
+      h1{max-width:18ch}
     }
-
     @media (max-width: 720px){
-      .wrap{padding:14px 14px 36px}
+      .wrap{padding:14px 14px 44px}
       .nav{border-radius:24px; padding:12px}
       .nav-links a:not(.cta){display:none}
       .brand img{width:52px; height:52px}
       .brand-copy span{display:none}
-      h1{font-size:clamp(2rem, 9vw, 3rem)}
-      .hero,.section,footer{border-radius:24px}
+      .metrics{grid-template-columns:1fr}
     }
 
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      *{transition:none !important}
-    }
-
-    @media print{
-      .nav-shell,#backToTop{display:none !important}
-      body{background:#fff}
-      .hero,.section,footer{box-shadow:none}
-    }
+    @media print{.nav-shell,#backToTop{display:none !important} body{background:#fff}}
   </style>
 </head>
 <body>
@@ -378,13 +242,15 @@
       </div>
     </div>
 
+    <!-- HERO (flow, not boxed) -->
     <header class="hero" id="overview">
       <div class="hero-grid">
-        <div>
+        <div class="content">
           <div class="pill">Lipoprotein(a) / Lp(a)</div>
-          <h1>Concerned about hidden heart risk?</h1>
+          <h1>Lipoprotein(a) patient information</h1>
           <p class="sub">
-            Lp(a) is a genetic cholesterol particle that is not included in many routine cholesterol panels. Knowing your level can help guide a more personalized prevention plan.
+            Lp(a) is a genetic cholesterol particle that’s not included in many routine cholesterol tests.
+            Knowing your level can help guide a more personalized prevention plan.
           </p>
 
           <div class="hero-actions">
@@ -392,173 +258,180 @@
             <a class="btn btn-secondary" href="#testing">How testing works</a>
           </div>
 
-          <div class="stat-row">
+          <div class="hr"></div>
+
+          <ul class="checklist" aria-label="Key takeaways">
+            <li><span class="check">✓</span><span>You can have “normal” LDL and still have high Lp(a).</span></li>
+            <li><span class="check">✓</span><span>High Lp(a) may raise risk for heart disease and aortic valve disease.</span></li>
+            <li><span class="check">✓</span><span>Because it runs in families, relatives may benefit from testing too.</span></li>
+          </ul>
+
+          <div class="stats" aria-label="Highlights">
             <div class="stat">
               <strong>Mostly genetic</strong>
-              <span>Lifestyle may help overall risk, but Lp(a) itself is usually inherited.</span>
+              <span>Lifestyle may not lower Lp(a) much directly, but it can improve overall risk.</span>
             </div>
             <div class="stat">
               <strong>Often missed</strong>
-              <span>Lp(a) is usually not part of standard cholesterol screening.</span>
+              <span>Lp(a) is typically not part of standard cholesterol screening.</span>
             </div>
             <div class="stat">
               <strong>Actionable</strong>
-              <span>Your result can help you and your clinician plan next steps.</span>
+              <span>Your result can help you and your clinician plan prevention.</span>
             </div>
           </div>
+
+          <p class="small" style="margin-top:16px;">
+            Educational information only (not medical advice).
+          </p>
         </div>
 
-        <aside class="hero-card" aria-label="Lp(a) information card">
+        <aside class="hero-aside" aria-label="Clinician illustration">
           <div class="hero-visual">
             <img src="doctor.png" alt="Clinician illustration" />
-          </div>
-
-          <div>
-            <div class="eyebrow">Why this matters</div>
-            <ul class="checklist">
-              <li><span class="check">✓</span><span>You can have normal LDL and still have high Lp(a).</span></li>
-              <li><span class="check">✓</span><span>High Lp(a) may increase risk for heart disease and aortic valve disease.</span></li>
-              <li><span class="check">✓</span><span>Because it runs in families, relatives may benefit from testing too.</span></li>
-            </ul>
           </div>
         </aside>
       </div>
     </header>
 
-    <section class="section survey-shell" id="survey">
-      <h2>Survey snapshot</h2>
-      <p class="lead">Your original content already has strong stats. This presentation restyles them into a cleaner campaign-style section with one featured stat and supporting metric cards.</p>
+    <!-- SURVEY (flow) -->
+    <section class="section" id="survey">
+      <div class="content">
+        <h2>Survey snapshot</h2>
+        <p class="lead">According to the survey reference used on your page, many people don’t know key cardiovascular numbers.</p>
 
-      <div class="survey-grid">
-        <div class="survey-feature">
-          <div class="small-label">Featured statistic</div>
-          <div class="big">74%</div>
-          <p>Do not know their personal Lp(a) level, according to the survey reference used on your page.</p>
-        </div>
+        <div class="hr"></div>
 
-        <div class="metric-stack">
-          <div class="metric">
-            <div>
-              <strong>54%</strong>
-              <span>Do not know if their personal LDL-C is below 100 mg/dL</span>
-            </div>
-            <div class="metric-badge">54</div>
-          </div>
-          <div class="metric">
-            <div>
-              <strong>16%</strong>
-              <span>Have Lp(a) levels above 125 nmol/L</span>
-            </div>
-            <div class="metric-badge">16</div>
-          </div>
-          <div class="metric">
-            <div>
-              <strong>11%</strong>
-              <span>Have hs-CRP levels above 3.0 mg/L</span>
-            </div>
-            <div class="metric-badge">11</div>
-          </div>
-          <div class="metric">
-            <div>
-              <strong>46%</strong>
-              <span>Have LDL-C levels above 100 mg/dL</span>
-            </div>
-            <div class="metric-badge">46</div>
-          </div>
+        <h3 style="margin-top:0;">Featured statistic</h3>
+        <p style="margin:0;">
+          <span style="font-size:3.2rem; font-weight:950; letter-spacing:-.03em; color:var(--navy); line-height:1;">74%</span>
+          <span style="color:var(--muted); font-weight:650;">do not know their personal Lp(a) level</span>
+        </p>
+
+        <div class="metrics" aria-label="Survey metrics">
+          <div class="metric"><div class="k">54%</div><div class="d">Do not know if their personal LDL-C is below 100 mg/dL</div></div>
+          <div class="metric"><div class="k">16%</div><div class="d">Have Lp(a) levels above 125 nmol/L</div></div>
+          <div class="metric"><div class="k">11%</div><div class="d">Have hs-CRP levels above 3.0 mg/L</div></div>
+          <div class="metric"><div class="k">46%</div><div class="d">Have LDL-C levels above 100 mg/dL</div></div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="testing">
-      <h2>Get your Lp(a) result in a few simple steps</h2>
-      <p class="lead">The reference site uses a very direct campaign flow: headline, simple benefits, then an easy step-by-step process. This structure adapts that same feel for your patient education page.</p>
-
-      <div class="steps-grid">
-        <article class="step-card">
-          <div class="step-number">1</div>
-          <h3>Ask about Lp(a) testing</h3>
-          <p>It is a simple blood test, but it is not always included in a standard cholesterol panel.</p>
-        </article>
-
-        <article class="step-card">
-          <div class="step-number">2</div>
-          <h3>Complete your blood draw</h3>
-          <p>Your clinician or care team can order the test and explain whether it fits your personal risk profile.</p>
-        </article>
-
-        <article class="step-card">
-          <div class="step-number">3</div>
-          <h3>Review what it means</h3>
-          <p>If elevated, your clinician can discuss LDL goals, prevention strategies, and whether family members should also be tested.</p>
-        </article>
-      </div>
-
-      <div class="cta-band">
-        <div>
-          <h3>Ready to talk with your care team?</h3>
-          <p>Use your existing appointment link as the main conversion point, just like the reference page repeatedly surfaces its location-selection CTA.</p>
-        </div>
-        <a class="btn btn-primary" href="https://centralfloridaheartcare.com/lipoproteina/" target="_blank" rel="noopener">Schedule appointment</a>
-      </div>
-    </section>
-
+    <!-- WHAT IT IS (flow) -->
     <section class="section" id="what">
-      <h2>Patient-friendly explanation</h2>
-      <p class="lead">Keep your current educational content, but present it in larger cards with softer color coding and more white space.</p>
+      <div class="content">
+        <h2>What is Lp(a), in plain language?</h2>
+        <p class="lead">Lp(a) is a cholesterol particle that can stick to artery walls. Most of the time, it’s inherited — meaning you can live well and still have a higher level.</p>
 
-      <div class="info-grid">
-        <article class="info-card">
-          <div class="tag">What it is</div>
-          <h3>A genetic cholesterol particle</h3>
-          <p>Think of Lp(a) as a form of LDL with an extra protein attached. That extra piece can make it more likely to contribute to plaque buildup over time.</p>
-        </article>
+        <div class="hr"></div>
 
-        <article class="info-card">
-          <div class="tag warm">Why it matters</div>
-          <h3>Risk can stay hidden</h3>
-          <p>High Lp(a) can increase risk for heart attack, stroke, and aortic valve disease even when a person otherwise feels well.</p>
-        </article>
+        <h3>What it is</h3>
+        <p class="small">Think of Lp(a) as a “type of LDL” with an extra protein attached. That extra piece can make it more likely to contribute to plaque buildup.</p>
 
-        <article class="info-card">
-          <div class="tag warm">Who should ask</div>
-          <h3>Good reasons to test</h3>
-          <p>Testing may be especially helpful when heart disease runs in the family, when a close relative has high Lp(a), or when cardiovascular disease appears despite routine cholesterol results that look acceptable.</p>
-        </article>
-
-        <article class="info-card">
-          <div class="tag">What results mean</div>
-          <h3>Think bigger than one number</h3>
-          <p>Many resources use above 50 mg/dL or above 125 nmol/L as elevated, but your clinician interprets the result together with your full risk picture.</p>
-        </article>
+        <h3>Why it matters</h3>
+        <p class="small">High Lp(a) can increase risk for heart attack and stroke over time — even if you feel fine today. Knowing your level helps you and your clinician plan prevention.</p>
       </div>
     </section>
 
-    <section class="section" id="faq">
-      <h2>Frequently asked questions</h2>
-      <p class="lead">The reference site relies heavily on expandable FAQs near the bottom. Your existing FAQ content already fits that pattern well.</p>
+    <!-- TESTING (flow) -->
+    <section class="section" id="testing">
+      <div class="content">
+        <h2>Should I ask for an Lp(a) test?</h2>
+        <p class="lead">Many people only need Lp(a) checked once. It’s especially helpful if heart disease runs in your family.</p>
 
-      <details>
-        <summary>Can I have normal cholesterol but still have high Lp(a)?</summary>
-        <div class="answer">Yes. Lp(a) is different from standard cholesterol numbers and usually requires a separate test.</div>
-      </details>
-      <details>
-        <summary>If Lp(a) is genetic, can lifestyle still help?</summary>
-        <div class="answer">Lifestyle may not lower Lp(a) much directly, but it can still improve your overall cardiovascular risk in a meaningful way.</div>
-      </details>
-      <details>
-        <summary>How often should I check Lp(a)?</summary>
-        <div class="answer">Many people only need it checked once because it is usually stable, although a clinician may recommend repeat testing in specific cases.</div>
-      </details>
-      <details>
-        <summary>What should I ask my clinician?</summary>
-        <div class="answer">Ask whether Lp(a) testing is appropriate for you, what your result means, what LDL goal fits your situation, and whether family members should be tested.</div>
-      </details>
+        <div class="hr"></div>
+
+        <h3>Good reasons to ask</h3>
+        <ul class="steps">
+          <li>Early heart disease in the family (heart attack or stroke at a younger age)</li>
+          <li>A parent, sibling, or child has high Lp(a)</li>
+          <li>Familial hypercholesterolemia (FH)</li>
+          <li>Heart disease despite “normal” routine cholesterol results</li>
+        </ul>
+
+        <div class="hr"></div>
+
+        <h3>How testing works</h3>
+        <ol class="steps">
+          <li><strong>Ask for Lp(a)</strong> — it’s a simple blood test, but it’s not always included in routine cholesterol testing.</li>
+          <li><strong>Review your result</strong> — your clinician interprets it with your overall risk.</li>
+          <li><strong>If elevated</strong> — your clinician may recommend testing close family members as well.</li>
+        </ol>
+
+        <div class="hero-actions" style="margin-top:18px;">
+          <a class="btn btn-primary" href="https://centralfloridaheartcare.com/lipoproteina/" target="_blank" rel="noopener">Schedule appointment</a>
+          <button class="btn btn-secondary" onclick="window.print()" type="button">Print this page</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS (flow) -->
+    <section class="section" id="results">
+      <div class="content">
+        <h2>What do results mean?</h2>
+        <p class="lead">Lp(a) may be reported in <strong>mg/dL</strong> or <strong>nmol/L</strong>. Your clinician interprets it based on your overall risk and your lab’s reference range.</p>
+
+        <div class="hr"></div>
+
+        <h3>Common thresholds</h3>
+        <p class="small">Many patient resources use <strong>&gt; 50 mg/dL</strong> or <strong>&gt; 125 nmol/L</strong> as a cutoff. Your clinician may use a different threshold depending on your situation.</p>
+
+        <h3>The big picture</h3>
+        <p class="small">High Lp(a) is a risk marker — it doesn’t guarantee a heart problem. It means you may benefit from a more personalized prevention plan (often focused on LDL control, blood pressure, and lifestyle).</p>
+      </div>
+    </section>
+
+    <!-- NEXT STEPS (flow) -->
+    <section class="section" id="next">
+      <div class="content">
+        <h2>Next steps if Lp(a) is high</h2>
+        <p class="lead">Even if Lp(a) itself doesn’t change much, your overall risk can improve a lot with the right plan.</p>
+
+        <div class="hr"></div>
+
+        <h3>High-impact basics</h3>
+        <ul class="steps">
+          <li>Heart-healthy eating pattern</li>
+          <li>Regular physical activity</li>
+          <li>Healthy weight maintenance</li>
+          <li>Avoid tobacco</li>
+          <li>Sleep, stress, and blood pressure control</li>
+        </ul>
+
+        <h3>What your clinician may discuss</h3>
+        <p class="small">Your clinician may recommend more intensive management of other risk factors (especially LDL cholesterol). Therapies that specifically target Lp(a) are being studied.</p>
+        <p class="small">Coverage varies. If checking insurance benefits, Lp(a) testing is often referenced with <strong>CPT 83695</strong>.</p>
+      </div>
+    </section>
+
+    <!-- FAQ (flow) -->
+    <section class="section" id="faq">
+      <div class="content">
+        <h2>FAQs</h2>
+        <p class="lead">Tap a question to expand.</p>
+
+        <details>
+          <summary>Can I have “normal cholesterol” but high Lp(a)?</summary>
+          <div class="answer">Yes. Lp(a) is different from standard cholesterol numbers and often requires a separate test.</div>
+        </details>
+        <details>
+          <summary>If Lp(a) is genetic, can lifestyle help?</summary>
+          <div class="answer">Lifestyle may not lower Lp(a) much directly, but it can significantly improve overall heart risk (blood pressure, weight, inflammation, and other cholesterol values).</div>
+        </details>
+        <details>
+          <summary>How often should I check Lp(a)?</summary>
+          <div class="answer">Many people only need it checked once because it’s usually stable. Your clinician may recommend repeats in specific situations.</div>
+        </details>
+        <details>
+          <summary>What should I ask my clinician?</summary>
+          <div class="answer">Ask whether Lp(a) testing is appropriate, what your result means for your risk, what LDL targets fit you, and whether family members should be tested.</div>
+        </details>
+      </div>
     </section>
 
     <footer>
       <strong>Medical disclaimer:</strong> This page is for educational purposes only and is not medical advice. It does not replace a conversation with a qualified clinician.
-      <div class="footer-line"></div>
-      <div>© <span id="year"></span> Central Florida Heart Care</div>
+      <div class="small" style="margin-top:10px;">© <span id="year"></span> Central Florida Heart Care</div>
     </footer>
   </div>
 
