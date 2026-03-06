@@ -67,8 +67,34 @@
     .nav-links .cta{background:var(--navy); color:#fff; border-color:var(--navy); box-shadow:0 12px 24px rgba(13,45,82,.18)}
 
     /* ===== Typography + flow layout ===== */
-    .content{max-width:72ch}
-    .section{margin-top:46px}
+    .content{max-width:980px; width:100%}
+.center{margin-left:auto; margin-right:auto}
+.narrow{max-width:72ch}
+    .section{margin-top:34px}
+
+/* Section “bands” (more website-like) */
+.band{
+  padding:34px 0;
+  border-radius:32px;
+}
+.band.bg-sky{
+  background:linear-gradient(180deg, rgba(234,244,251,.95), rgba(255,255,255,.70));
+  border:1px solid rgba(216,229,239,.65);
+}
+.band.bg-mint{
+  background:linear-gradient(180deg, rgba(223,246,242,.92), rgba(255,255,255,.70));
+  border:1px solid rgba(216,229,239,.65);
+}
+.band.bg-peach{
+  background:linear-gradient(180deg, rgba(255,239,231,.92), rgba(255,255,255,.70));
+  border:1px solid rgba(216,229,239,.65);
+}
+.band.bg-white{
+  background:rgba(255,255,255,.70);
+  border:1px solid rgba(216,229,239,.55);
+}
+.band .content{padding:0 22px}
+@media (max-width:720px){.band{padding:26px 0; border-radius:24px} .band .content{padding:0 16px}}
     .section h2{margin:0 0 10px; font-size:clamp(1.9rem, 2.6vw, 2.6rem); line-height:1.12; color:var(--navy); letter-spacing:-.03em}
     .section h3{margin:22px 0 8px; font-size:1.2rem; color:var(--navy)}
     .lead{margin:0 0 18px; color:var(--muted); font-size:1.08rem}
@@ -146,28 +172,41 @@
       flex:0 0 auto;
     }
 
-    /* ===== Stats row (no cards) ===== */
-    .stats{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:18px;
-    }
-    .stat strong{display:block; font-size:1.65rem; line-height:1; color:var(--navy); margin-bottom:6px}
-    .stat span{display:block; color:var(--muted); font-weight:650}
+    /* ===== Stats row (light cards; useful for scan) ===== */
+.stats{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+.stat{
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(216,229,239,.85);
+  border-radius:22px;
+  padding:16px;
+  box-shadow:0 12px 24px rgba(13,45,82,.06);
+}
+.stat strong{display:block; font-size:1.55rem; line-height:1.05; color:var(--navy); margin-bottom:6px}
+.stat span{display:block; color:var(--muted); font-weight:650}
 
-    /* ===== Survey metrics (no boxes) ===== */
-    .metrics{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:18px;
-      margin-top:16px;
-    }
-    .metric{border-top:2px solid rgba(216,229,239,.95); padding-top:14px}
-    .metric .k{font-size:2rem; font-weight:950; color:var(--navy); line-height:1}
-    .metric .d{margin-top:6px; color:var(--muted); font-weight:650}
+/* ===== Survey metrics (boxed; user requested) ===== */
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin-top:16px;
+}
+.metric{
+  background:rgba(255,255,255,.90);
+  border:1px solid rgba(216,229,239,.90);
+  border-radius:20px;
+  padding:16px;
+  box-shadow:0 12px 22px rgba(13,45,82,.06);
+}
+.metric .k{font-size:2rem; font-weight:950; color:var(--navy); line-height:1}
+.metric .d{margin-top:8px; color:var(--muted); font-weight:650}
 
-    /* ===== Steps (no boxes) ===== */
+/* ===== Steps (no boxes) ===== */
     .steps{margin:0; padding-left:18px; color:var(--muted)}
     .steps li{margin:10px 0}
 
@@ -243,9 +282,9 @@
     </div>
 
     <!-- HERO (flow, not boxed) -->
-    <header class="hero" id="overview">
+    <header class="hero band bg-white" id="overview">
       <div class="hero-grid">
-        <div class="content">
+        <div class="content center">
           <div class="pill">Lipoprotein(a) / Lp(a)</div>
           <h1>Lipoprotein(a) patient information</h1>
           <p class="sub">
@@ -295,8 +334,8 @@
     </header>
 
     <!-- SURVEY (flow) -->
-    <section class="section" id="survey">
-      <div class="content">
+    <section class="section band bg-sky" id="survey">
+      <div class="content center">
         <h2>Survey snapshot</h2>
         <p class="lead">According to the survey reference used on your page, many people don’t know key cardiovascular numbers.</p>
 
@@ -318,8 +357,8 @@
     </section>
 
     <!-- WHAT IT IS (flow) -->
-    <section class="section" id="what">
-      <div class="content">
+    <section class="section band bg-white" id="what">
+      <div class="content center">
         <h2>What is Lp(a), in plain language?</h2>
         <p class="lead">Lp(a) is a cholesterol particle that can stick to artery walls. Most of the time, it’s inherited — meaning you can live well and still have a higher level.</p>
 
@@ -334,8 +373,8 @@
     </section>
 
     <!-- TESTING (flow) -->
-    <section class="section" id="testing">
-      <div class="content">
+    <section class="section band bg-mint" id="testing">
+      <div class="content center">
         <h2>Should I ask for an Lp(a) test?</h2>
         <p class="lead">Many people only need Lp(a) checked once. It’s especially helpful if heart disease runs in your family.</p>
 
@@ -366,8 +405,8 @@
     </section>
 
     <!-- RESULTS (flow) -->
-    <section class="section" id="results">
-      <div class="content">
+    <section class="section band bg-white" id="results">
+      <div class="content center">
         <h2>What do results mean?</h2>
         <p class="lead">Lp(a) may be reported in <strong>mg/dL</strong> or <strong>nmol/L</strong>. Your clinician interprets it based on your overall risk and your lab’s reference range.</p>
 
@@ -382,8 +421,8 @@
     </section>
 
     <!-- NEXT STEPS (flow) -->
-    <section class="section" id="next">
-      <div class="content">
+    <section class="section band bg-peach" id="next">
+      <div class="content center">
         <h2>Next steps if Lp(a) is high</h2>
         <p class="lead">Even if Lp(a) itself doesn’t change much, your overall risk can improve a lot with the right plan.</p>
 
@@ -405,8 +444,8 @@
     </section>
 
     <!-- FAQ (flow) -->
-    <section class="section" id="faq">
-      <div class="content">
+    <section class="section band bg-white" id="faq">
+      <div class="content center">
         <h2>FAQs</h2>
         <p class="lead">Tap a question to expand.</p>
 
@@ -429,7 +468,7 @@
       </div>
     </section>
 
-    <footer>
+    <footer class="content center" style="max-width:980px;">
       <strong>Medical disclaimer:</strong> This page is for educational purposes only and is not medical advice. It does not replace a conversation with a qualified clinician.
       <div class="small" style="margin-top:10px;">© <span id="year"></span> Central Florida Heart Care</div>
     </footer>
