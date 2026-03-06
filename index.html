@@ -305,6 +305,34 @@
     }
 
     @media print{.nav-shell,#backToTop{display:none !important} body{background:#fff}}
+  
+
+    /* Simple inline “photo” blocks (generic visuals) */
+    .photo-row{margin-top:18px}
+    .photo-card{
+      margin:0;
+      background:rgba(255,255,255,.86);
+      border:1px solid rgba(216,229,239,.92);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 14px 28px rgba(15,29,42,.06);
+      max-width: 880px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .photo-card .illus{padding:14px}
+    .photo-card figcaption{
+      padding:12px 16px 16px;
+      color:var(--muted);
+      font-weight:700;
+      font-size:.98rem;
+      border-top:1px solid rgba(216,229,239,.92);
+    }
+
+    @media (max-width:980px){
+      .metrics{grid-template-columns:1fr}
+    }
+
   </style>
 </head>
 <body>
@@ -386,7 +414,7 @@
     <section class="section band bg-sky" id="survey">
       <div class="content center">
         <h2>Survey snapshot</h2>
-        <p class="lead">According to the survey reference used on your page, many people don’t know key cardiovascular numbers.</p>
+        <p class="lead">A quick snapshot from a clinician survey suggests many people are unsure of key cardiovascular numbers.</p>
 
         <div class="hr"></div>
 
@@ -399,15 +427,56 @@
         <div class="metrics" aria-label="Survey metrics">
           <div class="metric"><div class="k">54%</div><div class="d">Do not know if their personal LDL-C is below 100 mg/dL</div></div>
           <div class="metric"><div class="k">16%</div><div class="d">Have Lp(a) levels above 125 nmol/L</div></div>
-          <div class="metric"><div class="k">11%</div><div class="d">Have hs-CRP levels above 3.0 mg/L</div></div>
           <div class="metric"><div class="k">46%</div><div class="d">Have LDL-C levels above 100 mg/dL</div></div>
         </div>
-      </div>
-    </section>
 
-    <!-- WHAT IT IS (flow) -->
-    <section class="section band bg-white" id="what">
-      <div class="content center">
+        <div class="photo-row" aria-label="Related visuals">
+          <figure class="photo-card" aria-label="Laboratory illustration">
+            <div class="illus">
+              <svg viewBox="0 0 560 340" role="img" aria-label="Lab bench with vials" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#eaf4ff"/>
+                    <stop offset="1" stop-color="#ffecef"/>
+                  </linearGradient>
+                  <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#114f8a" stop-opacity=".20"/>
+                    <stop offset="1" stop-color="#c01f31" stop-opacity=".12"/>
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="560" height="340" rx="28" fill="url(#g1)"/>
+                <rect x="36" y="210" width="488" height="78" rx="18" fill="url(#g2)"/>
+                <!-- vials -->
+                <g transform="translate(90,80)">
+                  <rect x="0" y="30" width="62" height="170" rx="16" fill="#ffffff" stroke="#d8e5ef"/>
+                  <rect x="12" y="54" width="38" height="120" rx="10" fill="#eaf4ff"/>
+                  <rect x="10" y="0" width="42" height="36" rx="10" fill="#114f8a" opacity=".18"/>
+                </g>
+                <g transform="translate(190,70)">
+                  <rect x="0" y="40" width="62" height="180" rx="16" fill="#ffffff" stroke="#d8e5ef"/>
+                  <rect x="12" y="74" width="38" height="120" rx="10" fill="#ffecef"/>
+                  <rect x="10" y="0" width="42" height="46" rx="10" fill="#c01f31" opacity=".14"/>
+                </g>
+                <g transform="translate(290,90)">
+                  <rect x="0" y="20" width="62" height="160" rx="16" fill="#ffffff" stroke="#d8e5ef"/>
+                  <rect x="12" y="54" width="38" height="100" rx="10" fill="#eaf4ff"/>
+                  <rect x="10" y="0" width="42" height="26" rx="10" fill="#114f8a" opacity=".18"/>
+                </g>
+                <!-- microscope-ish silhouette -->
+                <g transform="translate(392,64)" opacity=".85">
+                  <rect x="42" y="168" width="110" height="22" rx="10" fill="#ffffff" stroke="#d8e5ef"/>
+                  <path d="M72 160c22-16 26-38 22-58l22-12c10 18 12 44-4 74l-40-4z" fill="#ffffff" stroke="#d8e5ef"/>
+                  <rect x="94" y="64" width="56" height="40" rx="14" fill="#ffffff" stroke="#d8e5ef"/>
+                  <rect x="64" y="104" width="90" height="22" rx="10" fill="#eaf4ff" stroke="#d8e5ef"/>
+                  <rect x="60" y="124" width="26" height="44" rx="12" fill="#ffecef" stroke="#d8e5ef"/>
+                </g>
+              </svg>
+            </div>
+            <figcaption>Lab-style blood testing visuals (generic)</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>nter">
         <h2>What is Lp(a), in plain language?</h2>
         <p class="lead">Lp(a) is a cholesterol particle that can stick to artery walls. Most of the time, it’s inherited — meaning you can live well and still have a higher level.</p>
 
