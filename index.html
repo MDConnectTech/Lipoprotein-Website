@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lp(a) Purple Cow — Central Florida Heart Care</title>
+<title>Lp(a) Central Florida Heart Care</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -158,26 +158,6 @@
   .content-block .copy-btn:hover { border-color: var(--red); color: var(--cream); }
   .content-block .copy-btn.copied { border-color: #2A6; color: #2A6; }
 
-  /* LINKEDIN */
-  .linkedin-mock {
-    background: #111; border: 1px solid #222; padding: 40px; margin-bottom: 24px;
-  }
-  .li-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
-  .li-avatar {
-    width: 48px; height: 48px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--red-dark), var(--red));
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif; font-weight: 700;
-    font-size: 18px; color: white; flex-shrink: 0;
-  }
-  .li-name { font-weight: 500; font-size: 14px; color: var(--cream); }
-  .li-title { font-size: 12px; color: #666; margin-top: 2px; }
-  .li-body {
-    font-size: 15px; line-height: 1.75; color: #CCC;
-    font-weight: 300; white-space: pre-line;
-  }
-  .li-body strong { color: var(--cream); font-weight: 500; }
-
   /* CAROUSEL */
   .carousel-slides {
     display: flex; gap: 16px; overflow-x: auto;
@@ -325,7 +305,6 @@
 <div class="tabs">
   <button class="tab active" onclick="showTab('core', this)">Core Truth</button>
   <button class="tab" onclick="showTab('survey', this)">Survey Data</button>
-  <button class="tab" onclick="showTab('linkedin', this)">LinkedIn Post</button>
   <button class="tab" onclick="showTab('carousel', this)">IG Carousel</button>
   <button class="tab" onclick="showTab('oneliners', this)">One-Liners</button>
   <button class="tab" onclick="showTab('reveal', this)">Reveal Sequence</button>
@@ -413,63 +392,6 @@
       — 46% had LDL levels above the recommended threshold.<br><br>
       We don't have a knowledge problem. We have a testing problem. And it's costing lives.</p>
       <button class="copy-btn" onclick="copyText('survey-hook-text', this)">Copy Hook</button>
-    </div>
-  </div>
-
-  <!-- LINKEDIN -->
-  <div id="linkedin" class="section">
-    <div class="linkedin-mock">
-      <div class="li-header">
-        <div class="li-avatar">C</div>
-        <div>
-          <div class="li-name">Central Florida Heart Care</div>
-          <div class="li-title">Preventive Cardiology · Lp(a) Screening · Orlando, FL</div>
-        </div>
-      </div>
-      <div class="li-body" id="li-post-text">Your routine cholesterol test came back normal.
-
-Your doctor said everything looks fine.
-
-You went home relieved.
-
-But here's what that panel didn't check:
-
-<strong>Lp(a) — Lipoprotein(a).</strong>
-
-It's a cholesterol particle that's set by your genetics at birth. It can silently raise your risk for heart attack, stroke, and aortic valve disease — even when every other number looks perfectly fine.
-
-And 74% of people have never had it measured.
-
-Here's what we know from patient data:
-
-→ 16% of people have levels above the high-risk threshold (125 nmol/L)
-→ It runs in families — if you have it, your relatives likely do too
-→ Lifestyle won't lower it significantly
-→ A single blood test (CPT 83695) can identify it
-→ Knowing your level can reshape your entire prevention plan
-
-At Central Florida Heart Care, we include Lp(a) in our screening because standard panels miss too much.
-
-If you've never been tested, ask your doctor about it — especially if heart disease runs in your family.
-
-One test. Life-changing information.
-
-#HeartHealth #Lpa #Lipoprotein #PreventiveCardiology #CentralFloridaHeartCare #ASCVD #HeartDiseasePrevention</div>
-      <button class="copy-btn" onclick="copyText('li-post-text', this)">Copy Post</button>
-    </div>
-
-    <div class="content-block">
-      <div class="block-label">Alternate Hook — Patient Family History</div>
-      <p id="li-alt-text">Did a parent, sibling, or grandparent have a heart attack "out of nowhere"?
-
-It might not have been out of nowhere at all.
-
-Lp(a) is the most common inherited cardiovascular risk factor — and one of the least tested. It runs in families. It's determined entirely by your genes.
-
-And a routine cholesterol panel won't catch it.
-
-One conversation with your cardiologist. One blood test. Could change what your future looks like — and your children's.</p>
-      <button class="copy-btn" onclick="copyText('li-alt-text', this)">Copy Alternate</button>
     </div>
   </div>
 
