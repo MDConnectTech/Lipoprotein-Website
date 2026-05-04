@@ -203,25 +203,6 @@
     font-size: 13px; font-weight: 500; color: white; text-align: center;
   }
 
-  /* ONE-LINERS */
-  .oneliners { display: flex; flex-direction: column; gap: 16px; }
-  .oneliner {
-    background: #111; border: 1px solid #222; padding: 28px 32px;
-    display: flex; align-items: flex-start; gap: 20px;
-  }
-  .oneliner-num {
-    font-family: 'Playfair Display', serif; font-size: 28px;
-    font-weight: 900; color: var(--red); opacity: 0.5;
-    flex-shrink: 0; line-height: 1; margin-top: 2px;
-  }
-  .oneliner-content .context {
-    font-family: 'DM Mono', monospace; font-size: 10px;
-    letter-spacing: 0.2em; color: var(--gold);
-    text-transform: uppercase; margin-bottom: 8px;
-  }
-  .oneliner-content .line { font-size: 16px; line-height: 1.6; color: var(--cream); font-weight: 300; }
-  .oneliner-content .line strong { font-weight: 600; }
-
   /* REVEAL */
   .reveal-steps { display: flex; flex-direction: column; gap: 0; }
   .reveal-step { display: flex; gap: 0; position: relative; }
@@ -310,7 +291,6 @@
   <button class="tab active" onclick="showTab('core', this)">Core Truth</button>
   <button class="tab" onclick="showTab('survey', this)">Survey Data</button>
   <button class="tab" onclick="showTab('carousel', this)">IG Carousel</button>
-  <button class="tab" onclick="showTab('FAQ', this)">One-Liners</button>
   <button class="tab" onclick="showTab('reveal', this)">Reveal Sequence</button>
 </div>
 
